@@ -23,14 +23,12 @@
         {
           "text": "No scrolling / less smartphone use",
           "tag": "daily",
-          "status": "running",
-          "note": "Implemented around episode 4-5"
+          "status": "running"
         },
         {
           "text": "No layering dopamine",
           "tag": "daily",
-          "status": "running",
-          "note": "Broader than I first realized — no music during workouts, jogs, or studying. The less you stack enjoyable things onto a task, the easier that task is to focus on by itself"
+          "status": "running"
         }
       ]
     },
@@ -41,8 +39,7 @@
         {
           "text": "17-minute meditation",
           "tag": "daily",
-          "status": "running",
-          "note": "Still rough — struggling to keep my mind on my breathing for the full 17 minutes"
+          "status": "running"
         },
         {
           "text": "Panoramic vision practice",
@@ -68,18 +65,15 @@
         },
         {
           "text": "Physical fidgeting",
-          "status": "running",
-          "note": "Barely a protocol — I already do this naturally, always spinning a pen. Doing it when needed"
+          "status": "running"
         },
         {
           "text": "Embrace frustration when learning and reinforce the feeling",
-          "status": "not-started",
-          "note": "Haven't hit much frustration yet since I've been enjoying the podcasts. Keeping it in mind for when I do"
+          "status": "not-started"
         },
         {
           "text": "Attach reward to effort",
-          "status": "running",
-          "note": "Treating the friction itself as the growth and the reward, instead of only attaching reward to the end goal"
+          "status": "running"
         },
         {
           "text": "Dopamine subjectivity",
@@ -88,13 +82,11 @@
         },
         {
           "text": "Blunt reward schedules",
-          "status": "running",
-          "note": "Doing this when applicable"
+          "status": "running"
         },
         {
           "text": "Randomized reward schedules",
-          "status": "running",
-          "note": "The YouTube channel is itself one big randomized reward schedule — views, likes and comments are unpredictable every time I post"
+          "status": "running"
         }
       ]
     },

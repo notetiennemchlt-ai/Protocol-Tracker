@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-11",
+  "lastUpdated": "2026-08-13",
   "categories": [
     {
       "name": "Foundations",
@@ -7,23 +7,48 @@
       "items": [
         { "text": "Prioritize sleep", "tag": "daily", "status": "running" },
         { "text": "Avoid bright lights at night", "tag": "daily", "status": "running" },
-        { "text": "High omega-3 intake", "tag": "daily", "status": "running" },
-        { "text": "Less sugar", "tag": "daily", "status": "running" },
+        {
+          "text": "High omega-3 intake",
+          "tag": "daily",
+          "status": "not-started",
+          "note": "Not implemented yet — need to go back to the episode for the exact dose cited in the studies, then work out how to get it in my diet"
+        },
+        {
+          "text": "Less sugar",
+          "tag": "daily",
+          "status": "running",
+          "note": "Sitting around 20g/day right now"
+        },
         { "text": "Maintain good social connection", "tag": "daily", "status": "running" },
-        { "text": "No scrolling / less smartphone use", "tag": "daily", "status": "running" },
-        { "text": "No layering dopamine", "tag": "daily", "status": "running" }
+        {
+          "text": "No scrolling / less smartphone use",
+          "tag": "daily",
+          "status": "running",
+          "note": "Implemented around episode 4-5"
+        },
+        {
+          "text": "No layering dopamine",
+          "tag": "daily",
+          "status": "running",
+          "note": "Broader than I first realized — no music during workouts, jogs, or studying. The less you stack enjoyable things onto a task, the easier that task is to focus on by itself"
+        }
       ]
     },
     {
       "name": "Training",
       "subtitle": "deliberate practice",
       "items": [
-        { "text": "17-minute meditation", "tag": "daily", "status": "running" },
+        {
+          "text": "17-minute meditation",
+          "tag": "daily",
+          "status": "running",
+          "note": "Still rough — struggling to keep my mind on my breathing for the full 17 minutes"
+        },
         {
           "text": "Panoramic vision practice",
           "tag": "daily",
           "status": "not-started",
-          "note": "Not implemented yet"
+          "note": "Not implemented yet — no specific duration was given, so I need to work out a practice"
         },
         {
           "text": "Visual focus tool",
@@ -36,17 +61,41 @@
       "name": "While Working",
       "subtitle": "deployed during a session",
       "items": [
-        { "text": "Blink control", "status": "running" },
-        { "text": "Physical fidgeting", "status": "dropped" },
-        { "text": "Embrace frustration when learning and reinforce the feeling", "status": "running" },
-        { "text": "Attach reward to effort", "status": "running" },
+        {
+          "text": "Blink control",
+          "status": "not-started",
+          "note": "Not implemented yet — blinking less during a task is associated with better focus, so it's a matter of getting used to it"
+        },
+        {
+          "text": "Physical fidgeting",
+          "status": "running",
+          "note": "Barely a protocol — I already do this naturally, always spinning a pen. Doing it when needed"
+        },
+        {
+          "text": "Embrace frustration when learning and reinforce the feeling",
+          "status": "not-started",
+          "note": "Haven't hit much frustration yet since I've been enjoying the podcasts. Keeping it in mind for when I do"
+        },
+        {
+          "text": "Attach reward to effort",
+          "status": "running",
+          "note": "Treating the friction itself as the growth and the reward, instead of only attaching reward to the end goal"
+        },
         {
           "text": "Dopamine subjectivity",
-          "status": "running",
-          "note": "Telling myself I enjoy it, believing my focus is already high"
+          "status": "dropped",
+          "note": "Tried it before — doesn't work well for me personally. Attaching reward to effort works better. May still work for others"
         },
-        { "text": "Blunt reward schedules", "status": "running" },
-        { "text": "Randomized reward schedules", "status": "running" }
+        {
+          "text": "Blunt reward schedules",
+          "status": "running",
+          "note": "Doing this when applicable"
+        },
+        {
+          "text": "Randomized reward schedules",
+          "status": "running",
+          "note": "The YouTube channel is itself one big randomized reward schedule — views, likes and comments are unpredictable every time I post"
+        }
       ]
     },
     {
@@ -54,21 +103,39 @@
       "subtitle": "physiological state on demand",
       "items": [
         { "text": "Caffeine every morning", "tag": "daily", "status": "running" },
-        { "text": "NSDR in the afternoon", "status": "running" },
+        {
+          "text": "NSDR in the afternoon",
+          "status": "running",
+          "note": "When I need it — I'm not always tired in the afternoon"
+        },
         {
           "text": "Superoxygenated breathing",
           "status": "running",
-          "note": "When low or procrastinating"
+          "note": "Works well for me. Used it once when I was unmotivated on the couch and it got me up and moving"
         },
-        { "text": "Cold exposure", "status": "running" }
+        {
+          "text": "Cold exposure",
+          "tag": "daily",
+          "status": "running",
+          "note": "Every morning"
+        }
       ]
     },
     {
       "name": "Timing & Environment",
       "subtitle": "set before you start",
       "items": [
-        { "text": "Work in peak alertness window, ~2hrs after waking", "tag": "daily", "status": "running" },
-        { "text": "Match background to arousal level", "status": "running" }
+        {
+          "text": "Work in peak alertness window, ~2hrs after waking",
+          "tag": "daily",
+          "status": "running",
+          "note": "Working in that window, though I also work outside it too"
+        },
+        {
+          "text": "Match background to arousal level",
+          "status": "running",
+          "note": "Usually calm but low motivation, so an open window and some background stimulation matches that"
+        }
       ]
     }
   ]

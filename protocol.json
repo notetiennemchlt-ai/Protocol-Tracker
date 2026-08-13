@@ -11,13 +11,12 @@
           "text": "High omega-3 intake",
           "tag": "daily",
           "status": "not-started",
-          "note": "Not implemented yet — need to go back to the episode for the exact dose cited in the studies, then work out how to get it in my diet"
+          "note": "Not implemented yet"
         },
         {
           "text": "Less sugar",
           "tag": "daily",
-          "status": "running",
-          "note": "Sitting around 20g/day right now"
+          "status": "running"
         },
         { "text": "Maintain good social connection", "tag": "daily", "status": "running" },
         {
@@ -45,7 +44,7 @@
           "text": "Panoramic vision practice",
           "tag": "daily",
           "status": "not-started",
-          "note": "Not implemented yet — no specific duration was given, so I need to work out a practice"
+          "note": "Not implemented"
         },
         {
           "text": "Visual focus tool",
@@ -61,7 +60,7 @@
         {
           "text": "Blink control",
           "status": "not-started",
-          "note": "Not implemented yet — blinking less during a task is associated with better focus, so it's a matter of getting used to it"
+          "note": "Not implemented yet"
         },
         {
           "text": "Physical fidgeting",
@@ -69,7 +68,7 @@
         },
         {
           "text": "Embrace frustration when learning and reinforce the feeling",
-          "status": "not-started"
+          "status": "running"
         },
         {
           "text": "Attach reward to effort",
@@ -97,19 +96,16 @@
         { "text": "Caffeine every morning", "tag": "daily", "status": "running" },
         {
           "text": "NSDR in the afternoon",
-          "status": "running",
-          "note": "When I need it — I'm not always tired in the afternoon"
+          "status": "running"
         },
         {
           "text": "Superoxygenated breathing",
-          "status": "running",
-          "note": "Works well for me. Used it once when I was unmotivated on the couch and it got me up and moving"
+          "status": "running"
         },
         {
           "text": "Cold exposure",
           "tag": "daily",
-          "status": "running",
-          "note": "Every morning"
+          "status": "running"
         }
       ]
     },
@@ -120,13 +116,11 @@
         {
           "text": "Work in peak alertness window, ~2hrs after waking",
           "tag": "daily",
-          "status": "running",
-          "note": "Working in that window, though I also work outside it too"
+          "status": "running"
         },
         {
           "text": "Match background to arousal level",
-          "status": "running",
-          "note": "Usually calm but low motivation, so an open window and some background stimulation matches that"
+          "status": "running"
         }
       ]
     }

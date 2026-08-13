@@ -1,0 +1,75 @@
+{
+  "lastUpdated": "2026-08-11",
+  "categories": [
+    {
+      "name": "Foundations",
+      "subtitle": "always on",
+      "items": [
+        { "text": "Prioritize sleep", "tag": "daily", "status": "running" },
+        { "text": "Avoid bright lights at night", "tag": "daily", "status": "running" },
+        { "text": "High omega-3 intake", "tag": "daily", "status": "running" },
+        { "text": "Less sugar", "tag": "daily", "status": "running" },
+        { "text": "Maintain good social connection", "tag": "daily", "status": "running" },
+        { "text": "No scrolling / less smartphone use", "tag": "daily", "status": "running" },
+        { "text": "No layering dopamine", "tag": "daily", "status": "running" }
+      ]
+    },
+    {
+      "name": "Training",
+      "subtitle": "deliberate practice",
+      "items": [
+        { "text": "17-minute meditation", "tag": "daily", "status": "running" },
+        {
+          "text": "Panoramic vision practice",
+          "tag": "daily",
+          "status": "not-started",
+          "note": "Not implemented yet"
+        },
+        {
+          "text": "Visual focus tool",
+          "status": "dropped",
+          "note": "Felt my visual focus was already fine"
+        }
+      ]
+    },
+    {
+      "name": "While Working",
+      "subtitle": "deployed during a session",
+      "items": [
+        { "text": "Blink control", "status": "running" },
+        { "text": "Physical fidgeting", "status": "dropped" },
+        { "text": "Embrace frustration when learning and reinforce the feeling", "status": "running" },
+        { "text": "Attach reward to effort", "status": "running" },
+        {
+          "text": "Dopamine subjectivity",
+          "status": "running",
+          "note": "Telling myself I enjoy it, believing my focus is already high"
+        },
+        { "text": "Blunt reward schedules", "status": "running" },
+        { "text": "Randomized reward schedules", "status": "running" }
+      ]
+    },
+    {
+      "name": "Alertness Levers",
+      "subtitle": "physiological state on demand",
+      "items": [
+        { "text": "Caffeine every morning", "tag": "daily", "status": "running" },
+        { "text": "NSDR in the afternoon", "status": "running" },
+        {
+          "text": "Superoxygenated breathing",
+          "status": "running",
+          "note": "When low or procrastinating"
+        },
+        { "text": "Cold exposure", "status": "running" }
+      ]
+    },
+    {
+      "name": "Timing & Environment",
+      "subtitle": "set before you start",
+      "items": [
+        { "text": "Work in peak alertness window, ~2hrs after waking", "tag": "daily", "status": "running" },
+        { "text": "Match background to arousal level", "status": "running" }
+      ]
+    }
+  ]
+}

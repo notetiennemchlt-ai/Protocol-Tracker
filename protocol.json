@@ -81,11 +81,13 @@
         },
         {
           "text": "Blunt reward schedules",
-          "status": "running"
+          "status": "running",
+          "note": "When applicable"
         },
         {
           "text": "Randomized reward schedules",
-          "status": "running"
+          "status": "running",
+          "note": "When applicable"
         }
       ]
     },
@@ -96,11 +98,13 @@
         { "text": "Caffeine every morning", "tag": "daily", "status": "running" },
         {
           "text": "NSDR in the afternoon",
-          "status": "running"
+          "status": "running",
+          "note": "When needed"
         },
         {
           "text": "Superoxygenated breathing",
-          "status": "running"
+          "status": "running",
+          "note": "When needed"
         },
         {
           "text": "Cold exposure",

@@ -1,9 +1,7 @@
-// The "Current Protocol" sidebar — entirely separate from the metrics
-// tracking in app.js/storage.js/metrics.js. It reads one static file
-// (protocol.json, sitting next to index.html) and just renders it; there's
-// no write path, no password, no shared state with the stats cards. To
-// change what's shown, edit protocol.json — add an item, flip a status,
-// add a whole category — nothing here needs to change.
+// The site is just this now: reads one static file (protocol.json, sitting
+// next to index.html) and renders it. No write path, no password, no other
+// page. To change what's shown, edit protocol.json — add an item, flip a
+// status, add a whole category — nothing here needs to change.
 
 const STATUS_LABEL = {
   running: 'Running',
@@ -29,7 +27,7 @@ function renderItem(item) {
   const li = document.createElement('li');
   li.className = `protocol-item status-${status}`;
   // Hover tooltip for anything with a note — a quick way to see it without
-  // needing the sidebar wide enough for the small text below to wrap nicely.
+  // needing extra vertical space for the small text below to wrap nicely.
   if (item.note) li.title = item.note;
 
   const dot = document.createElement('span');
@@ -96,7 +94,7 @@ function renderCategory(category) {
   return section;
 }
 
-export async function renderProtocol() {
+async function renderProtocol() {
   const body = document.getElementById('protocol-body');
   const updatedEl = document.getElementById('protocol-updated');
 
@@ -112,41 +110,4 @@ export async function renderProtocol() {
   }
 }
 
-// ---------- collapse / open ----------
-// Desktop: persistent and open by default, part of the page layout —
-// collapsing it just shrinks it to nothing and lets the stats column take
-// the space. Mobile: closed by default, opens as an overlay drawer with a
-// backdrop. Same toggle button and the same `sidebar-open` class drive
-// both; only the CSS differs per breakpoint (see style.css).
-
-const MOBILE_QUERY = '(max-width: 720px)';
-
-export function initProtocolSidebar() {
-  const shell = document.getElementById('shell');
-  const toggle = document.getElementById('protocol-toggle');
-  const backdrop = document.getElementById('protocol-backdrop');
-
-  const isMobile = () => window.matchMedia(MOBILE_QUERY).matches;
-
-  function setOpen(open) {
-    shell.classList.toggle('sidebar-open', open);
-    toggle.setAttribute('aria-expanded', String(open));
-  }
-
-  setOpen(!isMobile());
-
-  toggle.addEventListener('click', () => setOpen(!shell.classList.contains('sidebar-open')));
-  backdrop.addEventListener('click', () => setOpen(false));
-
-  // Crossing the mobile breakpoint (e.g. rotating a tablet) resets to that
-  // breakpoint's default rather than leaving a mobile-opened drawer stuck
-  // open as a desktop layout, or vice versa.
-  let lastMobile = isMobile();
-  window.addEventListener('resize', () => {
-    const mobile = isMobile();
-    if (mobile !== lastMobile) {
-      lastMobile = mobile;
-      setOpen(!mobile);
-    }
-  });
-}
+renderProtocol();

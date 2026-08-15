@@ -1,20 +1,19 @@
 # Protocol Tracker
 
-A public, read-only page of what I'm tracking — daily protocol checklist plus
-a couple of focus metrics. Static site, served by GitHub Pages.
+A public, read-only page of my current protocol — what I'm running, what's
+dropped, what's not implemented yet, and why. Static site, served by GitHub
+Pages.
 
 ## How this works
 
-- `protocol.json` — the "Current Protocol Tracker" list. Edit this to add,
-  remove, or change status on an item.
-- `data/entries.json` — the logged values for each metric (keyed by metric
-  id). Edit this to add a new entry.
-- `js/metrics.js` — defines which metrics show up as cards (id, label, unit,
-  cadence, etc).
+- `protocol.json` — the whole page. Edit this to add, remove, or change
+  status/notes on an item.
+- `js/protocol.js` — reads and renders `protocol.json`. Shouldn't need to
+  change when the protocol itself changes.
 
-There's no backend and nothing to unlock — it's just files. Change a file,
-commit, push, and GitHub Pages redeploys automatically within a minute or
-two.
+There's no backend and nothing to unlock — it's just files. Change
+`protocol.json`, commit, push, and GitHub Pages redeploys automatically
+within a minute or two.
 
 ## Local preview
 

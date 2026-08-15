@@ -9,6 +9,12 @@ const STATUS_LABEL = {
   'not-started': 'Not started',
 };
 
+// Only Work Sessions uses this — an item's optional "phase" field groups it
+// under a Before/During/After sub-header, in this fixed order. A category
+// whose items have no "phase" renders as a flat list, no sub-headers.
+const PHASE_ORDER = ['before', 'during', 'after'];
+const PHASE_LABEL = { before: 'Before', during: 'During', after: 'After' };
+
 async function loadProtocol() {
   const res = await fetch('protocol.json');
   if (!res.ok) throw new Error('Failed to load protocol.json');
@@ -46,15 +52,6 @@ function renderItem(item) {
   text.textContent = item.text;
   line.appendChild(text);
 
-  // Only [daily] ever gets a badge — an item with no tag is understood to
-  // be as-needed, so there's nothing to show for it.
-  if (item.tag === 'daily') {
-    const tag = document.createElement('span');
-    tag.className = 'protocol-tag';
-    tag.textContent = 'daily';
-    line.appendChild(tag);
-  }
-
   body.appendChild(line);
 
   // The dot alone carries Running/Not started/Dropped — note is just
@@ -69,6 +66,13 @@ function renderItem(item) {
 
   li.appendChild(body);
   return li;
+}
+
+function renderItemList(items) {
+  const list = document.createElement('ul');
+  list.className = 'protocol-item-list';
+  items.forEach((item) => list.appendChild(renderItem(item)));
+  return list;
 }
 
 function renderCategory(category) {
@@ -86,10 +90,22 @@ function renderCategory(category) {
   }
   section.appendChild(heading);
 
-  const list = document.createElement('ul');
-  list.className = 'protocol-item-list';
-  category.items.forEach((item) => list.appendChild(renderItem(item)));
-  section.appendChild(list);
+  const hasPhases = category.items.some((item) => item.phase);
+
+  if (hasPhases) {
+    PHASE_ORDER.forEach((phase) => {
+      const items = category.items.filter((item) => item.phase === phase);
+      if (items.length === 0) return;
+
+      const phaseHeading = document.createElement('h4');
+      phaseHeading.className = 'protocol-phase-title';
+      phaseHeading.textContent = PHASE_LABEL[phase];
+      section.appendChild(phaseHeading);
+      section.appendChild(renderItemList(items));
+    });
+  } else {
+    section.appendChild(renderItemList(category.items));
+  }
 
   return section;
 }

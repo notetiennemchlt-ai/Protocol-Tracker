@@ -1,131 +1,93 @@
 {
-  "lastUpdated": "2026-08-13",
+  "lastUpdated": "2026-08-14",
   "categories": [
     {
       "name": "Foundations",
       "subtitle": "always on",
       "items": [
-        { "text": "Prioritize sleep", "tag": "daily", "status": "running" },
-        { "text": "Avoid bright lights at night", "tag": "daily", "status": "running" },
-        {
-          "text": "High omega-3 intake",
-          "tag": "daily",
-          "status": "not-started",
-          "note": "Not implemented yet"
-        },
-        {
-          "text": "Less sugar",
-          "tag": "daily",
-          "status": "running"
-        },
-        { "text": "Maintain good social connection", "tag": "daily", "status": "running" },
-        {
-          "text": "No scrolling / less smartphone use",
-          "tag": "daily",
-          "status": "running"
-        },
-        {
-          "text": "No layering dopamine",
-          "tag": "daily",
-          "status": "running"
-        }
+        { "text": "Prioritize sleep", "status": "running" },
+        { "text": "Avoid bright lights at night", "status": "running" },
+        { "text": "High omega-3 intake", "status": "not-started", "note": "Not implemented yet" },
+        { "text": "Less sugar", "status": "running" },
+        { "text": "Maintain good social connection", "status": "running" },
+        { "text": "No scrolling / less smartphone use", "status": "running" },
+        { "text": "No layering dopamine", "status": "running" }
       ]
     },
     {
       "name": "Training",
       "subtitle": "deliberate practice",
       "items": [
-        {
-          "text": "17-minute meditation",
-          "tag": "daily",
-          "status": "running"
-        },
-        {
-          "text": "Panoramic vision practice",
-          "tag": "daily",
-          "status": "not-started",
-          "note": "Not implemented"
-        },
-        {
-          "text": "Visual focus tool",
-          "status": "dropped",
-          "note": "Felt my visual focus was already fine"
-        }
+        { "text": "17-minute meditation", "status": "running" },
+        { "text": "Panoramic vision practice", "status": "not-started", "note": "Not implemented" },
+        { "text": "Visual focus tool", "status": "dropped", "note": "Felt my visual focus was already fine" }
       ]
     },
     {
-      "name": "While Working",
-      "subtitle": "deployed during a session",
+      "name": "Work Sessions",
+      "subtitle": "before, during, and after",
       "items": [
+        { "text": "Work in peak alertness window, ~2hrs after waking", "status": "running", "phase": "before" },
+        {
+          "text": "Circadian anchoring",
+          "status": "not-started",
+          "phase": "before",
+          "note": "Anchoring the deep focus session to the right phase of the day"
+        },
+        {
+          "text": "Dopamine spotlighting",
+          "status": "not-started",
+          "phase": "before",
+          "note": "Visualization done right before starting the session"
+        },
+        {
+          "text": "Visualization tool",
+          "status": "not-started",
+          "phase": "before",
+          "note": "Visualization done right before starting the session"
+        },
+        { "text": "Match background to arousal level", "status": "running", "phase": "before" },
         {
           "text": "Blink control",
           "status": "not-started",
+          "phase": "during",
           "note": "Not implemented yet"
         },
-        {
-          "text": "Physical fidgeting",
-          "status": "running"
-        },
+        { "text": "Physical fidgeting", "status": "running", "phase": "during" },
         {
           "text": "Embrace frustration when learning and reinforce the feeling",
-          "status": "running"
+          "status": "not-started",
+          "phase": "during"
         },
-        {
-          "text": "Attach reward to effort",
-          "status": "running"
-        },
+        { "text": "Attach reward to effort", "status": "running", "phase": "during" },
         {
           "text": "Dopamine subjectivity",
           "status": "dropped",
+          "phase": "during",
           "note": "Tried it before — doesn't work well for me personally. Attaching reward to effort works better. May still work for others"
         },
         {
           "text": "Blunt reward schedules",
           "status": "running",
+          "phase": "after",
           "note": "When applicable"
         },
         {
           "text": "Randomized reward schedules",
           "status": "running",
+          "phase": "after",
           "note": "When applicable"
         }
       ]
     },
     {
       "name": "Alertness Levers",
-      "subtitle": "physiological state on demand",
+      "subtitle": "state repair — when something's off, not the default routine",
       "items": [
-        { "text": "Caffeine every morning", "tag": "daily", "status": "running" },
-        {
-          "text": "NSDR in the afternoon",
-          "status": "running",
-          "note": "When needed"
-        },
-        {
-          "text": "Superoxygenated breathing",
-          "status": "running",
-          "note": "When needed"
-        },
-        {
-          "text": "Cold exposure",
-          "tag": "daily",
-          "status": "running"
-        }
-      ]
-    },
-    {
-      "name": "Timing & Environment",
-      "subtitle": "set before you start",
-      "items": [
-        {
-          "text": "Work in peak alertness window, ~2hrs after waking",
-          "tag": "daily",
-          "status": "running"
-        },
-        {
-          "text": "Match background to arousal level",
-          "status": "running"
-        }
+        { "text": "Caffeine every morning", "status": "running" },
+        { "text": "NSDR in the afternoon", "status": "running", "note": "When needed" },
+        { "text": "Superoxygenated breathing", "status": "running", "note": "When needed" },
+        { "text": "Cold exposure", "status": "running" }
       ]
     }
   ]

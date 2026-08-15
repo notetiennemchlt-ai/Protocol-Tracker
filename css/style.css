@@ -150,6 +150,23 @@ body {
   opacity: 0.75;
 }
 
+/* Sub-headers within a category (currently only Work Sessions' Before/
+   During/After) — deliberately smaller and dimmer than a category title,
+   and indented, so the two levels of hierarchy read at a glance. */
+.protocol-phase-title {
+  margin: 14px 0 6px 10px;
+  font-size: 9.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.protocol-category-title + .protocol-phase-title {
+  margin-top: 2px;
+}
+
 .protocol-item-list {
   list-style: none;
   margin: 0;
@@ -157,6 +174,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+
+.protocol-phase-title + .protocol-item-list {
+  padding-left: 10px;
 }
 
 .protocol-item {
@@ -211,20 +232,6 @@ body {
   color: var(--text-secondary);
   text-decoration: line-through;
   text-decoration-color: rgba(255, 255, 255, 0.25);
-}
-
-.protocol-tag {
-  flex-shrink: 0;
-  font-size: 9.5px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 1px 7px;
-  white-space: nowrap;
 }
 
 .protocol-item-note {

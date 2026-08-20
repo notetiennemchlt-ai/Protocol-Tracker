@@ -76,7 +76,6 @@
     },
     {
       "name": "Alertness Levers",
-      "subtitle": "state repair — when something's off, not the default routine",
       "items": [
         { "text": "Caffeine", "status": "running", "note": "Every morning" },
         { "text": "NSDR in the afternoon", "status": "running", "note": "When needed" },

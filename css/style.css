@@ -113,6 +113,14 @@ body {
   font-weight: 700;
 }
 
+.protocol-title-note {
+  margin-left: 3px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+  cursor: help;
+}
+
 .protocol-updated {
   font-size: 11px;
   color: var(--text-muted);

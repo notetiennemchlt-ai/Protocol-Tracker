@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-14",
+  "lastUpdated": "2026-08-19",
   "categories": [
     {
       "name": "Foundations",
@@ -19,7 +19,7 @@
       "subtitle": "deliberate practice",
       "items": [
         { "text": "17-minute meditation", "status": "running" },
-        { "text": "Panoramic vision practice", "status": "not-started", "note": "Not implemented" },
+        { "text": "Panoramic vision practice", "status": "not-started", "note": "Now anchored to the 45/5 rule" },
         { "text": "Visual focus tool", "status": "dropped", "note": "Felt my visual focus was already fine" }
       ]
     },
@@ -47,6 +47,11 @@
           "note": "Visualization done right before starting the session"
         },
         { "text": "Match background to arousal level", "status": "running", "phase": "before" },
+        { "text": "Maximize light during the session", "status": "not-started", "phase": "before" },
+        { "text": "Elevate screen so I'm looking up or straight ahead", "status": "not-started", "phase": "before" },
+        { "text": "Set the visual window (sit close enough that the work fills my field of view)", "status": "not-started", "phase": "before" },
+        { "text": "Remove interruptions (phone out of the room, notifications and wifi off)", "status": "not-started", "phase": "before" },
+        { "text": "40 Hz binaural beats", "status": "not-started", "phase": "before" },
         {
           "text": "Blink control",
           "status": "not-started",
@@ -58,6 +63,13 @@
           "text": "Embrace frustration when learning and reinforce the feeling",
           "status": "not-started",
           "phase": "during"
+        },
+        { "text": "45/5 rule (5 minutes of panoramic vision per 45 minutes of focused work)", "status": "not-started", "phase": "during" },
+        {
+          "text": "Standing for part of the session",
+          "status": "not-started",
+          "phase": "during",
+          "note": "Not implemented — would need a standing desk"
         },
         { "text": "Attach reward to effort", "status": "running", "phase": "during" },
         {

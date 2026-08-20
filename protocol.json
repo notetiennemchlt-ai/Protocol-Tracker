@@ -19,52 +19,58 @@
       "subtitle": "deliberate practice",
       "items": [
         { "text": "17-minute meditation", "status": "running", "note": "Daily" },
-        { "text": "Panoramic vision practice", "status": "not-started", "note": "5 minutes for every 45 minutes of focused studying" },
+        { "text": "Panoramic vision practice", "status": "running", "note": "5 minutes for every 45 minutes of focused studying" },
         { "text": "Visual focus tool", "status": "dropped", "note": "Felt my visual focus was already fine" }
       ]
     },
     {
-      "name": "Work Sessions",
-      "subtitle": "before, during, and after",
+      "name": "Timing and Environment",
       "items": [
-        { "text": "Work in peak alertness window, ~2hrs after waking", "status": "running", "phase": "before" },
-        { "text": "Match background to arousal level", "status": "running", "phase": "before" },
-        { "text": "Elevate screen so I'm looking up or straight ahead", "status": "not-started", "phase": "before" },
-        { "text": "Set the visual window (sit close enough that the work fills my field of view)", "status": "not-started", "phase": "before" },
-        { "text": "Remove interruptions (phone out of the room, notifications and wifi off)", "status": "running", "phase": "before" },
-        { "text": "40 Hz binaural beats", "status": "not-started", "phase": "before", "note": "Before or during a work session" },
+        { "text": "Work in peak alertness window, ~2hrs after waking", "status": "running" },
+        { "text": "Match background to arousal level", "status": "running" },
+        { "text": "Elevate screen so I'm looking up or straight ahead", "status": "not-started" },
+        { "text": "Set the visual window (sit close enough that the work fills my field of view)", "status": "not-started" },
+        { "text": "Remove interruptions (phone out of the room, notifications and wifi off)", "status": "running" },
+        { "text": "Deep work within first 0 to 8 hours after waking", "status": "running" },
+        { "text": "Maximize light when working in the first 0 to 8 hours after waking", "status": "running" }
+      ]
+    },
+    {
+      "name": "During Work Sessions",
+      "items": [
+        { "text": "40 Hz binaural beats", "status": "running", "note": "Before or during a work session" },
         {
           "text": "Blink control",
           "status": "not-started",
-          "phase": "during",
           "note": "Not implemented yet"
         },
-        { "text": "Physical fidgeting", "status": "running", "phase": "during" },
-        { "text": "45/5 rule (5 minutes of panoramic vision per 45 minutes of focused work)", "status": "not-started", "phase": "during" },
+        { "text": "Physical fidgeting", "status": "running", "note": "If needed" },
+        { "text": "45/5 rule (5 minutes of panoramic vision per 45 minutes of focused work)", "status": "not-started" },
         {
           "text": "Standing for part of the session",
-          "status": "not-started",
-          "phase": "during",
-          "note": "Not implemented — would need a standing desk"
-        },
-        { "text": "Attach reward to effort", "status": "running", "phase": "during" },
-        {
-          "text": "Dopamine subjectivity",
           "status": "dropped",
-          "phase": "during",
-          "note": "Tried it before — doesn't work well for me personally. Attaching reward to effort works better. May still work for others"
-        },
+          "note": "Not implemented — would need a standing desk"
+        }
+      ]
+    },
+    {
+      "name": "Increasing Long-Term Motivation",
+      "items": [
         {
           "text": "Blunt reward schedules",
           "status": "running",
-          "phase": "after",
           "note": "When applicable"
         },
         {
           "text": "Randomized reward schedules",
           "status": "running",
-          "phase": "after",
           "note": "When applicable"
+        },
+        { "text": "Attach reward to effort", "status": "running" },
+        {
+          "text": "Dopamine subjectivity",
+          "status": "dropped",
+          "note": "Tried it before — doesn't work well for me personally. Attaching reward to effort works better. May still work for others"
         }
       ]
     },
@@ -90,9 +96,7 @@
           "text": "Visualization tool",
           "status": "running",
           "note": "As needed - not used consistently"
-        },
-        { "text": "Deep work in first 0-8 hours after waking", "status": "running" },
-        { "text": "Maximize light when working in first 0-8 hours after waking", "status": "running" }
+        }
       ]
     },
     {

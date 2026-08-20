@@ -28,10 +28,28 @@
         { "text": "Work in peak alertness window, ~2hrs after waking", "status": "running" },
         { "text": "Match background to arousal level", "status": "running" },
         { "text": "Remove Interruptions as much as possible", "status": "running" },
-        { "text": "Deep work within first 8 hours after waking", "status": "running" },
-        { "text": "Maximize light if working during first 8 hours after waking", "status": "running" },
         { "text": "Elevate screen so I'm looking up or straight ahead", "status": "not-started" },
         { "text": "Set the visual window (sit close enough that the work fills my field of view)", "status": "not-started" }
+      ]
+    },
+    {
+      "name": "Circadian Anchoring",
+      "items": [
+        {
+          "text": "Phase 1 (0-8 hours after waking)",
+          "status": "running",
+          "note": "Maximize light exposure while working, do deep focus work in this phase."
+        },
+        {
+          "text": "Phase 2 (8-16 hours after waking)",
+          "status": "running",
+          "note": "Do easier tasks during this phase of the day if possible. Begin dimming lights as the day goes on."
+        },
+        {
+          "text": "Phase 3 (16-24 hours after waking)",
+          "status": "running",
+          "note": "Ideally, sleep during this phase, however if you choose to do work, work in an environment that is as dimly lit as possible whilst still being able to do work."
+        }
       ]
     },
     {

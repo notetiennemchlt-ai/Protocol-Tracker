@@ -7,11 +7,11 @@
       "items": [
         { "text": "Prioritize sleep", "status": "running" },
         { "text": "Avoid bright lights at night", "status": "running" },
-        { "text": "High omega-3 intake", "status": "not-started", "note": "Not implemented yet" },
-        { "text": "Less sugar", "status": "running" },
+        { "text": "Low sugar diet", "status": "running" },
         { "text": "Maintain good social connection", "status": "running" },
-        { "text": "No scrolling + less smartphone use", "status": "running" },
-        { "text": "No layering dopamine", "status": "running" }
+        { "text": "Zero scrolling + less smartphone use", "status": "running" },
+        { "text": "No layering dopamine", "status": "running" },
+        { "text": "High omega-3 intake", "status": "not-started", "note": "Not implemented yet" }
       ]
     },
     {
@@ -19,7 +19,6 @@
       "subtitle": "deliberate practice",
       "items": [
         { "text": "17-minute meditation", "status": "running", "note": "Daily" },
-        { "text": "Panoramic vision practice", "status": "running", "note": "5 minutes for every 45 minutes of focused studying" },
         { "text": "Visual focus tool", "status": "dropped", "note": "Felt my visual focus was already fine" }
       ]
     },
@@ -28,22 +27,17 @@
       "items": [
         { "text": "Work in peak alertness window, ~2hrs after waking", "status": "running" },
         { "text": "Match background to arousal level", "status": "running" },
+        { "text": "Remove Interruptions as much as possible", "status": "running" },
+        { "text": "Deep work within first 8 hours after waking", "status": "running" },
+        { "text": "Maximize light if working during first 8 hours after waking", "status": "running" },
         { "text": "Elevate screen so I'm looking up or straight ahead", "status": "not-started" },
-        { "text": "Set the visual window (sit close enough that the work fills my field of view)", "status": "not-started" },
-        { "text": "Remove Interruptions as best as possible", "status": "running" },
-        { "text": "Deep work within first 0 to 8 hours after waking", "status": "running" },
-        { "text": "Maximize light when working in the first 0 to 8 hours after waking", "status": "running" }
+        { "text": "Set the visual window (sit close enough that the work fills my field of view)", "status": "not-started" }
       ]
     },
     {
       "name": "During Work Sessions",
       "items": [
         { "text": "40 Hz binaural beats", "status": "running", "note": "Before or during a work session" },
-        {
-          "text": "Blink control",
-          "status": "not-started",
-          "note": "Not implemented yet"
-        },
         { "text": "Physical fidgeting", "status": "running", "note": "As needed" },
         { "text": "45/5 rule (5 minutes of panoramic vision per 45 minutes of focused work)", "status": "running" },
         {
@@ -78,9 +72,9 @@
       "name": "Alertness Levers",
       "items": [
         { "text": "Caffeine", "status": "running", "note": "Every morning" },
+        { "text": "Cold exposure", "status": "running", "note": "Every morning" },
         { "text": "NSDR in the afternoon", "status": "running", "note": "When needed" },
-        { "text": "Superoxygenated breathing", "status": "running", "note": "When needed" },
-        { "text": "Cold exposure", "status": "running", "note": "Every morning" }
+        { "text": "Superoxygenated breathing", "status": "running", "note": "When needed" }
       ]
     },
     {

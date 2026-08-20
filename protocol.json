@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-19",
+  "lastUpdated": "2026-08-20",
   "categories": [
     {
       "name": "Foundations",
@@ -10,7 +10,7 @@
         { "text": "High omega-3 intake", "status": "not-started", "note": "Not implemented yet" },
         { "text": "Less sugar", "status": "running" },
         { "text": "Maintain good social connection", "status": "running" },
-        { "text": "No scrolling / less smartphone use", "status": "running" },
+        { "text": "No scrolling + less smartphone use", "status": "running" },
         { "text": "No layering dopamine", "status": "running" }
       ]
     },
@@ -18,8 +18,8 @@
       "name": "Training",
       "subtitle": "deliberate practice",
       "items": [
-        { "text": "17-minute meditation", "status": "running" },
-        { "text": "Panoramic vision practice", "status": "not-started", "note": "Now anchored to the 45/5 rule" },
+        { "text": "17-minute meditation", "status": "running", "note": "Daily" },
+        { "text": "Panoramic vision practice", "status": "not-started", "note": "5 minutes for every 45 minutes of focused studying" },
         { "text": "Visual focus tool", "status": "dropped", "note": "Felt my visual focus was already fine" }
       ]
     },
@@ -28,30 +28,11 @@
       "subtitle": "before, during, and after",
       "items": [
         { "text": "Work in peak alertness window, ~2hrs after waking", "status": "running", "phase": "before" },
-        {
-          "text": "Circadian anchoring",
-          "status": "not-started",
-          "phase": "before",
-          "note": "Anchoring the deep focus session to the right phase of the day"
-        },
-        {
-          "text": "Dopamine spotlighting",
-          "status": "not-started",
-          "phase": "before",
-          "note": "Visualization done right before starting the session"
-        },
-        {
-          "text": "Visualization tool",
-          "status": "not-started",
-          "phase": "before",
-          "note": "Visualization done right before starting the session"
-        },
         { "text": "Match background to arousal level", "status": "running", "phase": "before" },
-        { "text": "Maximize light during the session", "status": "not-started", "phase": "before" },
         { "text": "Elevate screen so I'm looking up or straight ahead", "status": "not-started", "phase": "before" },
         { "text": "Set the visual window (sit close enough that the work fills my field of view)", "status": "not-started", "phase": "before" },
-        { "text": "Remove interruptions (phone out of the room, notifications and wifi off)", "status": "not-started", "phase": "before" },
-        { "text": "40 Hz binaural beats", "status": "not-started", "phase": "before" },
+        { "text": "Remove interruptions (phone out of the room, notifications and wifi off)", "status": "running", "phase": "before" },
+        { "text": "40 Hz binaural beats", "status": "not-started", "phase": "before", "note": "Before or during a work session" },
         {
           "text": "Blink control",
           "status": "not-started",
@@ -59,11 +40,6 @@
           "note": "Not implemented yet"
         },
         { "text": "Physical fidgeting", "status": "running", "phase": "during" },
-        {
-          "text": "Embrace frustration when learning and reinforce the feeling",
-          "status": "not-started",
-          "phase": "during"
-        },
         { "text": "45/5 rule (5 minutes of panoramic vision per 45 minutes of focused work)", "status": "not-started", "phase": "during" },
         {
           "text": "Standing for part of the session",
@@ -100,6 +76,32 @@
         { "text": "NSDR in the afternoon", "status": "running", "note": "When needed" },
         { "text": "Superoxygenated breathing", "status": "running", "note": "When needed" },
         { "text": "Cold exposure", "status": "running" }
+      ]
+    },
+    {
+      "name": "Habit Formation",
+      "items": [
+        {
+          "text": "Dopamine spotlighting",
+          "status": "running",
+          "note": "As needed - not used consistently"
+        },
+        {
+          "text": "Visualization tool",
+          "status": "running",
+          "note": "As needed - not used consistently"
+        },
+        { "text": "Deep work in first 0-8 hours after waking", "status": "running" },
+        { "text": "Maximize light when working in first 0-8 hours after waking", "status": "running" }
+      ]
+    },
+    {
+      "name": "Enforce Learning",
+      "items": [
+        {
+          "text": "Embrace frustration when learning and reinforce the feeling",
+          "status": "not-started"
+        }
       ]
     }
   ]

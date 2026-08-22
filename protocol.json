@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-20",
+  "lastUpdated": "2026-08-22",
   "categories": [
     {
       "name": "Foundations",
@@ -11,7 +11,11 @@
         { "text": "Maintain good social connection", "status": "running" },
         { "text": "Zero scrolling + less smartphone use", "status": "running" },
         { "text": "No layering dopamine", "status": "running" },
-        { "text": "High omega-3 intake", "status": "not-started", "note": "Not implemented yet" }
+        {
+          "text": "High omega-3 intake",
+          "status": "not-started",
+          "note": "Not implemented yet — target is 1,000mg EPA/DHA daily. Deciding between a supplement and eating more sardines."
+        }
       ]
     },
     {
@@ -29,7 +33,12 @@
         { "text": "Match background to arousal level", "status": "running" },
         { "text": "Remove Interruptions as much as possible", "status": "running" },
         { "text": "Elevate screen so I'm looking up or straight ahead", "status": "not-started" },
-        { "text": "Set the visual window (sit close enough that the work fills my field of view)", "status": "not-started" }
+        { "text": "Set the visual window (sit close enough that the work fills my field of view)", "status": "not-started" },
+        {
+          "text": "Minimize background noise (AC, heaters, fans)",
+          "status": "not-started",
+          "note": "Not implemented yet"
+        }
       ]
     },
     {
@@ -92,7 +101,12 @@
         { "text": "Caffeine", "status": "running", "note": "Every morning" },
         { "text": "Cold exposure", "status": "running", "note": "Every morning" },
         { "text": "NSDR in the afternoon", "status": "running", "note": "When needed" },
-        { "text": "Superoxygenated breathing", "status": "running", "note": "When needed" }
+        { "text": "Superoxygenated breathing", "status": "running", "note": "When needed" },
+        {
+          "text": "Morning exercise before deep focus work",
+          "status": "running",
+          "note": "Every morning, before focus work"
+        }
       ]
     },
     {

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-22",
+  "lastUpdated": "2026-08-23",
   "categories": [
     {
       "name": "Foundations",
@@ -22,8 +22,13 @@
       "name": "Training",
       "subtitle": "deliberate practice",
       "items": [
-        { "text": "17-minute meditation", "status": "running", "note": "Daily" },
-        { "text": "Visual focus tool", "status": "dropped", "note": "Felt my visual focus was already fine" }
+        { "text": "17-minute meditation", "status": "running", "note": "Daily. Not within 4 hours of sleep" },
+        { "text": "Visual focus tool", "status": "dropped", "note": "Felt my visual focus was already fine" },
+        {
+          "text": "Hypnosis training",
+          "status": "not-started",
+          "note": "Not implemented — I have enough protocols for the 30-day stretch"
+        }
       ]
     },
     {
@@ -38,7 +43,8 @@
           "text": "Minimize background noise (AC, heaters, fans)",
           "status": "not-started",
           "note": "Not implemented yet"
-        }
+        },
+        { "text": "Focus neither hungry nor full", "status": "running" }
       ]
     },
     {
@@ -71,6 +77,11 @@
           "text": "Standing for part of the session",
           "status": "dropped",
           "note": "Not implemented — would need a standing desk"
+        },
+        {
+          "text": "Work in 90-minute ultradian cycles",
+          "status": "running",
+          "note": "Two 45/5 blocks make one cycle"
         }
       ]
     },
@@ -98,9 +109,21 @@
     {
       "name": "Alertness Levers",
       "items": [
-        { "text": "Caffeine", "status": "running", "note": "Every morning" },
-        { "text": "Cold exposure", "status": "running", "note": "Every morning" },
-        { "text": "NSDR in the afternoon", "status": "running", "note": "When needed" },
+        {
+          "text": "Caffeine",
+          "status": "running",
+          "note": "90-120 minutes after waking. ~50mg, I'm caffeine sensitive"
+        },
+        {
+          "text": "Cold exposure",
+          "status": "running",
+          "note": "Every morning. Uncomfortable but safe for 1-5 minutes"
+        },
+        {
+          "text": "NSDR",
+          "status": "running",
+          "note": "When needed. A guided script, not a nap. Any time of day"
+        },
         { "text": "Superoxygenated breathing", "status": "running", "note": "When needed" },
         {
           "text": "Morning exercise before deep focus work",

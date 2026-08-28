@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-24",
+  "lastUpdated": "2026-08-27",
   "categories": [
     {
       "name": "Foundations",
@@ -15,6 +15,16 @@
           "text": "High omega-3 intake",
           "status": "not-started",
           "note": "Not implemented yet — target is 1,000mg EPA/DHA daily. Deciding between a supplement and eating more sardines."
+        },
+        {
+          "text": "Morning sunlight",
+          "status": "running",
+          "note": "5-10 min on a sunny day, 10-20 if cloudy"
+        },
+        {
+          "text": "High tyrosine intake",
+          "status": "not-started",
+          "note": "Not implemented yet — deciding between diet and a supplement"
         }
       ]
     },
@@ -22,7 +32,11 @@
       "name": "Training",
       "subtitle": "deliberate practice",
       "items": [
-        { "text": "17-minute meditation", "status": "running", "note": "Daily. Not within 4 hours of sleep" },
+        {
+          "text": "17-minute meditation",
+          "status": "not-started",
+          "note": "Not consistent yet. Not within 4 hours of sleep"
+        },
         { "text": "Visual focus tool", "status": "dropped", "note": "Felt my visual focus was already fine" },
         {
           "text": "Hypnosis training",
@@ -103,6 +117,11 @@
           "text": "Dopamine subjectivity",
           "status": "dropped",
           "note": "Tried it before — doesn't work well for me personally. Attaching reward to effort works better. May still work for others"
+        },
+        {
+          "text": "Do something harder when procrastinating",
+          "status": "not-started",
+          "note": "Cold shower or similar — rebounds to baseline faster"
         }
       ]
     },

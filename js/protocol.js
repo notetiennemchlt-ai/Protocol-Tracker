@@ -90,15 +90,10 @@ function renderItemList(items) {
 }
 
 function renderCategory(category) {
-  // A "collapsible" category (currently only Circadian Anchoring, once it
-  // grew too many phases/subpoints to sit as a flat section) renders as a
-  // native <details>/<summary> disclosure instead of a plain header, closed
-  // by default.
-  const isCollapsible = !!category.collapsible;
-  const section = document.createElement(isCollapsible ? 'details' : 'section');
-  section.className = isCollapsible ? 'protocol-category protocol-category-collapsible' : 'protocol-category';
+  const section = document.createElement('section');
+  section.className = 'protocol-category';
 
-  const heading = document.createElement(isCollapsible ? 'summary' : 'h3');
+  const heading = document.createElement('h3');
   heading.className = 'protocol-category-title';
   heading.textContent = category.name;
   if (category.subtitle) {

@@ -51,7 +51,6 @@
     },
     {
       "name": "Circadian Anchoring",
-      "collapsible": true,
       "items": [
         {
           "text": "Phase 1 (0-8 hours after waking)",
@@ -59,7 +58,8 @@
           "subitems": [
             "Morning sunlight",
             "Maximize light exposure while working",
-            "Do deep focus work in this phase"
+            "Do deep focus work in this phase",
+            "Caffeine and cold exposure done in this phase"
           ]
         },
         {

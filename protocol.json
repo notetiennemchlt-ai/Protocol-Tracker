@@ -1,30 +1,19 @@
 {
-  "lastUpdated": "2026-08-27",
+  "lastUpdated": "2026-08-28",
   "categories": [
     {
       "name": "Foundations",
       "subtitle": "always on",
       "items": [
         { "text": "Prioritize sleep", "status": "running" },
-        { "text": "Avoid bright lights at night", "status": "running" },
         { "text": "Low sugar diet", "status": "running" },
         { "text": "Maintain good social connection", "status": "running" },
         { "text": "Zero scrolling + less smartphone use", "status": "running" },
         { "text": "No layering dopamine", "status": "running" },
         {
-          "text": "High omega-3 intake",
+          "text": "Adequate Omega 3 intake",
           "status": "not-started",
-          "note": "Not implemented yet — target is 1,000mg EPA/DHA daily. Deciding between a supplement and eating more sardines."
-        },
-        {
-          "text": "Morning sunlight",
-          "status": "running",
-          "note": "5-10 min on a sunny day, 10-20 if cloudy"
-        },
-        {
-          "text": "High tyrosine intake",
-          "status": "not-started",
-          "note": "Not implemented yet — deciding between diet and a supplement"
+          "note": "Sufficient to modulate good focus"
         }
       ]
     },
@@ -34,12 +23,12 @@
       "items": [
         {
           "text": "17-minute meditation",
-          "status": "not-started",
+          "status": "running",
           "note": "Not consistent yet. Not within 4 hours of sleep"
         },
-        { "text": "Visual focus tool", "status": "dropped", "note": "Felt my visual focus was already fine" },
+        { "text": "Visual focus training", "status": "running" },
         {
-          "text": "Hypnosis training",
+          "text": "\"Hypnosis\" training",
           "status": "not-started",
           "note": "Not implemented — I have enough protocols for the 30-day stretch"
         }
@@ -48,7 +37,6 @@
     {
       "name": "Timing and Environment",
       "items": [
-        { "text": "Work in peak alertness window, ~2hrs after waking", "status": "running" },
         { "text": "Match background to arousal level", "status": "running" },
         { "text": "Remove Interruptions as much as possible", "status": "running" },
         { "text": "Elevate screen so I'm looking up or straight ahead", "status": "not-started" },
@@ -63,21 +51,32 @@
     },
     {
       "name": "Circadian Anchoring",
+      "collapsible": true,
       "items": [
         {
           "text": "Phase 1 (0-8 hours after waking)",
           "status": "running",
-          "note": "Maximize light exposure while working, do deep focus work in this phase."
+          "subitems": [
+            "Morning sunlight",
+            "Maximize light exposure while working",
+            "Do deep focus work in this phase"
+          ]
         },
         {
           "text": "Phase 2 (8-16 hours after waking)",
           "status": "running",
-          "note": "Do easier tasks during this phase of the day if possible. Begin dimming lights as the day goes on."
+          "subitems": [
+            "Do easier tasks during this phase of the day if possible",
+            "Begin dimming lights as the day goes on"
+          ]
         },
         {
           "text": "Phase 3 (16-24 hours after waking)",
           "status": "running",
-          "note": "Ideally, sleep during this phase, however if you choose to do work, work in an environment that is as dimly lit as possible whilst still being able to do work."
+          "subitems": [
+            "Ideally, sleep during this phase",
+            "If you choose to work instead, work in an environment as dimly lit as possible while still being able to do work"
+          ]
         }
       ]
     },
@@ -90,7 +89,7 @@
         {
           "text": "Standing for part of the session",
           "status": "dropped",
-          "note": "Not implemented — would need a standing desk"
+          "note": "No access to a standing desk"
         },
         {
           "text": "Work in 90-minute ultradian cycles",
@@ -116,7 +115,7 @@
         {
           "text": "Dopamine subjectivity",
           "status": "dropped",
-          "note": "Tried it before — doesn't work well for me personally. Attaching reward to effort works better. May still work for others"
+          "note": "Interferes with attaching reward to effort (can't do both) — attaching reward to effort works better for me"
         },
         {
           "text": "Do something harder when procrastinating",

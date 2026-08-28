@@ -157,6 +157,45 @@ body {
   opacity: 0.75;
 }
 
+/* A collapsible category (native <details>/<summary>) — closed by default,
+   its title doubles as the toggle. */
+.protocol-category-collapsible > summary.protocol-category-title {
+  cursor: pointer;
+  align-items: center;
+  list-style: none;
+}
+
+.protocol-category-collapsible > summary::-webkit-details-marker {
+  display: none;
+}
+
+.protocol-category-collapsible > summary.protocol-category-title::after {
+  content: '▸';
+  margin-left: auto;
+  font-size: 9px;
+  color: var(--text-muted);
+  transition: transform 0.15s ease;
+}
+
+.protocol-category-collapsible[open] > summary.protocol-category-title::after {
+  transform: rotate(90deg);
+}
+
+/* An item's subitems — plain bullets nested under it, replacing a single
+   note when there's more than one point to make (Circadian Anchoring's
+   phases). */
+.protocol-subitem-list {
+  list-style: disc;
+  margin: 4px 0 0 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 /* Sub-headers within a category (currently only Work Sessions' Before/
    During/After) — deliberately smaller and dimmer than a category title,
    and indented, so the two levels of hierarchy read at a glance. */

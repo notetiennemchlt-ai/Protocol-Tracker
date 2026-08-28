@@ -64,6 +64,20 @@ function renderItem(item) {
     body.appendChild(noteLine);
   }
 
+  // An item's optional "subitems" list breaks it into its own bullet
+  // points, in place of a single note — currently only Circadian
+  // Anchoring's phases use this.
+  if (item.subitems && item.subitems.length) {
+    const subList = document.createElement('ul');
+    subList.className = 'protocol-subitem-list';
+    item.subitems.forEach((sub) => {
+      const subLi = document.createElement('li');
+      subLi.textContent = sub;
+      subList.appendChild(subLi);
+    });
+    body.appendChild(subList);
+  }
+
   li.appendChild(body);
   return li;
 }
@@ -76,10 +90,15 @@ function renderItemList(items) {
 }
 
 function renderCategory(category) {
-  const section = document.createElement('section');
-  section.className = 'protocol-category';
+  // A "collapsible" category (currently only Circadian Anchoring, once it
+  // grew too many phases/subpoints to sit as a flat section) renders as a
+  // native <details>/<summary> disclosure instead of a plain header, closed
+  // by default.
+  const isCollapsible = !!category.collapsible;
+  const section = document.createElement(isCollapsible ? 'details' : 'section');
+  section.className = isCollapsible ? 'protocol-category protocol-category-collapsible' : 'protocol-category';
 
-  const heading = document.createElement('h3');
+  const heading = document.createElement(isCollapsible ? 'summary' : 'h3');
   heading.className = 'protocol-category-title';
   heading.textContent = category.name;
   if (category.subtitle) {

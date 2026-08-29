@@ -12,7 +12,7 @@
         { "text": "No layering dopamine", "status": "running" },
         {
           "text": "Adequate Omega 3 intake",
-          "status": "not-started",
+          "status": "running",
           "note": "Sufficient to modulate good focus"
         }
       ]
@@ -29,8 +29,8 @@
         { "text": "Visual focus training", "status": "running" },
         {
           "text": "\"Hypnosis\" training",
-          "status": "not-started",
-          "note": "Not implemented — I have enough protocols for the 30-day stretch"
+          "status": "dropped",
+          "note": "Using scripts hits a paywall"
         }
       ]
     },
@@ -42,9 +42,8 @@
         { "text": "Elevate screen so I'm looking up or straight ahead", "status": "not-started" },
         { "text": "Set the visual window (sit close enough that the work fills my field of view)", "status": "not-started" },
         {
-          "text": "Minimize background noise (AC, heaters, fans)",
-          "status": "not-started",
-          "note": "Not implemented yet"
+          "text": "Minimize background noise while working (AC, heaters, fans)",
+          "status": "running"
         },
         { "text": "Focus neither hungry nor full", "status": "running" }
       ]
@@ -119,8 +118,8 @@
         },
         {
           "text": "Do something harder when procrastinating",
-          "status": "not-started",
-          "note": "Cold shower or similar — rebounds to baseline faster"
+          "status": "running",
+          "note": "When unmotivated/needed"
         }
       ]
     },

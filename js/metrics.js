@@ -17,15 +17,17 @@ const TOTAL_DAYS = 30;
 const CARDS = [
   {
     title: 'Digit Span',
+    subtitle: 'Average over 3 trials',
     blocks: [{ key: 'digitSpan', label: 'Digit Span', unit: '', direction: 'up-is-good', colorVar: '--series-1' }],
   },
   {
     title: 'PVT',
-    subtitle: 'Avg reaction time, 3-minute test',
+    subtitle: 'Average over three 3-minute trials',
     blocks: [{ key: 'pvtRt', label: 'Reaction Time', unit: 'ms', direction: 'down-is-good', colorVar: '--series-2' }],
   },
   {
     title: 'Mind-Wandering Count',
+    subtitle: 'During the 17-minute meditation',
     blocks: [{ key: 'wanderCount', label: 'Mind-Wandering Count', unit: '', direction: 'down-is-good', colorVar: '--series-4' }],
   },
 ];

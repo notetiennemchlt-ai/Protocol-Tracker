@@ -13,7 +13,8 @@ Pages.
 - `data/metrics.json` — the 30-day metrics tracker. `startDate` is Day 1 of
   the 30 days (the "Day X of 30" indicator is computed from it vs. today);
   `entries` is one object per day (`day: 0` is the baseline) with
-  `digitSpan`, `pvtRt` (avg reaction time over a 3-minute PVT), and
+  `digitSpan` (avg over 3 trials), `pvtRt` (avg reaction time over three
+  3-minute PVT trials), and
   `wanderCount` — any of which can be `null` if that measurement was
   missed. To add a day, append an entry and push.
 - `js/metrics.js` / `js/chart.js` — read and render `data/metrics.json` as

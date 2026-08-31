@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "2026-08-30",
+  "lastUpdated": "2026-08-31",
   "categories": [
     {
       "name": "Foundations",
       "subtitle": "always on",
       "items": [
-        { "text": "Prioritize sleep", "status": "running" },
-        { "text": "Low sugar diet", "status": "running" },
+        { "text": "Prioritize sleep", "status": "running", "note": "At least 8 hours" },
+        { "text": "Low sugar diet", "status": "running", "note": "Under 25 grams/day" },
         { "text": "Maintain good social connection", "status": "running" },
         { "text": "Zero scrolling + less smartphone use", "status": "running" },
         { "text": "No layering dopamine", "status": "running" },
@@ -24,9 +24,9 @@
         {
           "text": "17-minute meditation",
           "status": "running",
-          "note": "Not within 4 hours of sleep"
+          "note": "Not within 4 hours of sleep. Done in phase 2 of the day"
         },
-        { "text": "Visual focus training", "status": "running" },
+        { "text": "Visual focus training", "status": "running", "note": "Done for 5 minutes" },
         {
           "text": "\"Hypnosis\" training",
           "status": "dropped",
@@ -39,7 +39,7 @@
       "items": [
         { "text": "Match background to arousal level", "status": "running" },
         { "text": "Remove Interruptions as much as possible", "status": "running" },
-        { "text": "Elevate screen so I'm looking up or straight ahead", "status": "not-started" },
+        { "text": "Elevate screen so I'm looking up or straight ahead", "status": "running" },
         { "text": "Set the visual window (sit close enough that the work fills my field of view)", "status": "running" },
         {
           "text": "Minimize background noise while working (AC, heaters, fans)",

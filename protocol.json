@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-29",
+  "lastUpdated": "2026-08-30",
   "categories": [
     {
       "name": "Foundations",
@@ -45,7 +45,8 @@
           "text": "Minimize background noise while working (AC, heaters, fans)",
           "status": "running"
         },
-        { "text": "Focus neither hungry nor full", "status": "running" }
+        { "text": "Focus neither hungry nor full", "status": "running" },
+        { "text": "Study alone", "status": "running" }
       ]
     },
     {
@@ -171,7 +172,13 @@
           "text": "Embrace frustration when learning and reinforce the feeling",
           "status": "running",
           "note": "When applicable"
-        }
+        },
+        {
+          "text": "Test yourself immediately after exposure",
+          "status": "not-started",
+          "note": "Open-ended short answer, not multiple choice"
+        },
+        { "text": "Teach the material", "status": "running" }
       ]
     }
   ]

@@ -2,6 +2,10 @@
  * Dark-only palette, validated against this app's own surfaces (not the
  * generic #1a1a19 dark-mode default) via the dataviz skill's validator:
  *   node scripts/validate_palette.js "#3987e5" --mode dark --surface "#05060a"
+ *   node scripts/validate_palette.js "#3987e5,#d95926,#199e70,#c98500" \
+ *     --mode dark --surface "#10131d"   (--series-1..4, all pass)
+ * --series-N follows the categorical ramp's fixed order — append, never
+ * reassign, when a new metric is added in js/metrics.js.
  */
 :root {
   --bg-0: #05060a;
@@ -13,8 +17,15 @@
   --text-secondary: #a7aec0;
   --text-muted: #6b7182;
 
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+
   --good: #2fbf3f;
   --bad: #e5544f;
+
+  --gridline: rgba(255, 255, 255, 0.07);
 }
 
 * {
@@ -34,7 +45,7 @@ body {
 }
 
 #page {
-  max-width: 720px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 0 24px 80px;
 }
@@ -92,11 +103,26 @@ body {
 }
 
 /* ==================================================================
-   Current Protocol Tracker — the whole page now, centered as the main
-   content instead of a side panel. See js/protocol.js.
+   Shell — protocol sidebar on the left, 30-day metrics filling the rest.
    ================================================================== */
 
-#protocol-panel {
+#shell {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* ==================================================================
+   Current Protocol Tracker sidebar. See js/protocol.js.
+   ================================================================== */
+
+#protocol-sidebar {
+  flex: 0 0 300px;
+  width: 300px;
+  position: sticky;
+  top: 24px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
   background: var(--surface-1);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -267,6 +293,206 @@ body {
   color: var(--text-muted);
 }
 
+/* ==================================================================
+   30-day metrics area — fills the shell to the right of the protocol
+   sidebar. See js/metrics.js and js/chart.js.
+   ================================================================== */
+
+#metrics-area {
+  flex: 1;
+  min-width: 0;
+}
+
+.metrics-header {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.metrics-title {
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.metrics-updated {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.day-indicator {
+  flex-shrink: 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 14px;
+}
+
+.metric-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+/* ---------- card ---------- */
+
+.metric-card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 20px 16px;
+}
+
+.metric-card-title {
+  margin: 0 0 14px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.metric-block + .metric-block {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.metric-block-label {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.metric-block-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.metric-current {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.metric-current-value {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.metric-current-delta {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.metric-current-delta.good { color: var(--good); }
+.metric-current-delta.bad { color: var(--bad); }
+.metric-current-delta.flat { color: var(--text-muted); }
+
+.metric-direction-tag {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3px 9px;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+/* ---------- chart ---------- */
+
+.metric-chart-wrap {
+  position: relative;
+}
+
+.chart-svg {
+  width: 100%;
+  height: 160px;
+  display: block;
+  overflow: visible;
+}
+
+.chart-empty {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+}
+
+.chart-axis-label {
+  font-size: 9.5px;
+}
+
+.chart-end-label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.chart-baseline-label {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.chart-tooltip {
+  position: absolute;
+  transform: translate(-50%, -130%);
+  background: rgba(10, 12, 20, 0.92);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.chart-tooltip.visible {
+  opacity: 1;
+}
+
+.chart-tooltip-value {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.chart-tooltip-date {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+@media (max-width: 780px) {
+  #shell {
+    flex-direction: column;
+  }
+
+  #protocol-sidebar {
+    position: static;
+    width: 100%;
+    max-height: none;
+  }
+}
+
 @media (max-width: 480px) {
   #app-header {
     padding-top: 28px;
@@ -274,6 +500,15 @@ body {
 
   #unlock-area {
     margin-left: 0;
+  }
+
+  .metric-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-block-head {
+    flex-direction: column;
+    gap: 8px;
   }
 
   .protocol-item-line {

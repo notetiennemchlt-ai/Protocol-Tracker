@@ -24,18 +24,32 @@
     </div>
   </header>
 
-  <main id="protocol-panel" aria-label="Current Protocol Tracker">
-    <div class="protocol-header">
-      <h2 class="protocol-title">
-        Current Protocol Tracker
-        <span class="protocol-title-note">*No supplements included</span>
-      </h2>
-      <div id="protocol-updated" class="protocol-updated"></div>
-    </div>
-    <div id="protocol-body" class="protocol-body"></div>
-  </main>
+  <div id="shell">
+    <aside id="protocol-sidebar" aria-label="Current Protocol Tracker">
+      <div class="protocol-header">
+        <h2 class="protocol-title">
+          Current Protocol Tracker
+          <span class="protocol-title-note">*No supplements included</span>
+        </h2>
+        <div id="protocol-updated" class="protocol-updated"></div>
+      </div>
+      <div id="protocol-body" class="protocol-body"></div>
+    </aside>
+
+    <main id="metrics-area" aria-label="30-Day Focus Metrics">
+      <div class="metrics-header">
+        <div class="metrics-titles">
+          <h2 class="metrics-title">30-Day Focus Metrics</h2>
+          <div id="metrics-updated" class="metrics-updated"></div>
+        </div>
+        <div id="day-indicator" class="day-indicator"></div>
+      </div>
+      <div id="metric-cards" class="metric-cards"></div>
+    </main>
+  </div>
 </div>
 
 <script type="module" src="js/protocol.js"></script>
+<script type="module" src="js/metrics.js"></script>
 </body>
 </html>

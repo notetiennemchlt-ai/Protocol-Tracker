@@ -11,7 +11,9 @@ const TOTAL_DAYS = 30;
 // direction: 'up-is-good' or 'down-is-good' — which way a delta from
 // baseline is colored green vs red.
 // colorVar: next unused slot in the app's fixed categorical order
-// (css/style.css --series-1..4) — never reassign/cycle these.
+// (css/style.css --series-1..4) — never reassign/cycle these. --series-3
+// is currently unused (freed when PVT lapses was dropped) — leave it open
+// for the next metric rather than reusing it by renumbering the others.
 const CARDS = [
   {
     title: 'Digit Span',
@@ -19,10 +21,8 @@ const CARDS = [
   },
   {
     title: 'PVT',
-    blocks: [
-      { key: 'pvtRt', label: 'Reaction Time', unit: 'ms', direction: 'down-is-good', colorVar: '--series-2' },
-      { key: 'pvtLapses', label: 'Lapses', unit: '', direction: 'down-is-good', colorVar: '--series-3' },
-    ],
+    subtitle: 'Avg reaction time, 3-minute test',
+    blocks: [{ key: 'pvtRt', label: 'Reaction Time', unit: 'ms', direction: 'down-is-good', colorVar: '--series-2' }],
   },
   {
     title: 'Mind-Wandering Count',
@@ -155,6 +155,13 @@ function renderCard(card, entries) {
   title.className = 'metric-card-title';
   title.textContent = card.title;
   section.appendChild(title);
+
+  if (card.subtitle) {
+    const subtitle = document.createElement('div');
+    subtitle.className = 'metric-card-subtitle';
+    subtitle.textContent = card.subtitle;
+    section.appendChild(subtitle);
+  }
 
   const showLabel = card.blocks.length > 1;
   card.blocks.forEach((block) => {

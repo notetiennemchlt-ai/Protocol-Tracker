@@ -26,9 +26,9 @@ const CARDS = [
     blocks: [{ key: 'pvtRt', label: 'Reaction Time', unit: 'ms', direction: 'down-is-good', colorVar: '--series-2' }],
   },
   {
-    title: 'Mind-Wandering Count',
-    subtitle: 'During the 17-minute meditation',
-    blocks: [{ key: 'wanderCount', label: 'Mind-Wandering Count', unit: '', direction: 'down-is-good', colorVar: '--series-4' }],
+    title: 'Minutes of Focused Learning',
+    subtitle: 'Per day',
+    blocks: [{ key: 'focusMinutes', label: 'Minutes of Focused Learning', unit: 'min', direction: 'up-is-good', colorVar: '--series-4' }],
   },
 ];
 

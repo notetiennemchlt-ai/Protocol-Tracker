@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-31",
+  "lastUpdated": "2026-09-01",
   "categories": [
     {
       "name": "Foundations",
@@ -154,11 +154,6 @@
       "name": "Habit Formation",
       "items": [
         {
-          "text": "Dopamine spotlighting",
-          "status": "running",
-          "note": "As needed - not used consistently"
-        },
-        {
           "text": "Visualization tool",
           "status": "running",
           "note": "As needed - not used consistently"
@@ -175,7 +170,7 @@
         },
         {
           "text": "Test yourself immediately after exposure",
-          "status": "not-started",
+          "status": "running",
           "note": "Open-ended short answer, not multiple choice"
         },
         { "text": "Teach the material", "status": "running" }

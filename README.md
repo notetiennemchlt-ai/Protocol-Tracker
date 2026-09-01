@@ -15,8 +15,9 @@ Pages.
   `entries` is one object per day (`day: 0` is the baseline) with
   `digitSpan` (avg over 3 trials), `pvtRt` (avg reaction time over three
   3-minute PVT trials), and
-  `wanderCount` — any of which can be `null` if that measurement was
-  missed. To add a day, append an entry and push.
+  `focusMinutes` (minutes of focused learning that day) — any of which can
+  be `null` if that measurement was missed. To add a day, append an entry
+  and push.
 - `js/metrics.js` / `js/chart.js` — read and render `data/metrics.json` as
   the three metric cards. Shouldn't need to change when the data changes.
 

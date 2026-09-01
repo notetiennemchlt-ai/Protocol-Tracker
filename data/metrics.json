@@ -5,9 +5,9 @@
     {
       "day": 0,
       "date": "2026-08-31",
-      "digitSpan": null,
-      "pvtRt": null,
-      "focusMinutes": null
+      "digitSpan": 6.6,
+      "pvtRt": 282.6,
+      "focusMinutes": 90
     }
   ]
 }

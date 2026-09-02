@@ -1,6 +1,6 @@
 {
   "startDate": "2026-09-01",
-  "lastUpdated": "2026-08-31",
+  "lastUpdated": "2026-09-01",
   "entries": [
     {
       "day": 0,
@@ -8,6 +8,13 @@
       "digitSpan": 6.6,
       "pvtRt": 282.6,
       "focusMinutes": 90
+    },
+    {
+      "day": 1,
+      "date": "2026-09-01",
+      "digitSpan": 6.6,
+      "pvtRt": 270,
+      "focusMinutes": 60
     }
   ]
 }

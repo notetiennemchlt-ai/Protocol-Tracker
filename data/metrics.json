@@ -14,21 +14,21 @@
       "date": "2026-09-01",
       "digitSpan": 6.6,
       "pvtRt": 270,
-      "focusMinutes": 60
+      "focusMinutes": 75
     },
     {
       "day": 2,
       "date": "2026-09-02",
       "digitSpan": 6.6,
       "pvtRt": 258,
-      "focusMinutes": 0
+      "focusMinutes": 15
     },
     {
       "day": 3,
       "date": "2026-09-03",
       "digitSpan": 6.0,
       "pvtRt": 260,
-      "focusMinutes": 60
+      "focusMinutes": 75
     }
   ]
 }

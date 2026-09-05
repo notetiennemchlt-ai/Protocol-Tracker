@@ -17,11 +17,13 @@ const TOTAL_DAYS = 30;
 const CARDS = [
   {
     title: 'Digit Span',
+    link: 'https://humanbenchmark.now/tests/digit-span',
     subtitle: 'Average over 3 trials',
     blocks: [{ key: 'digitSpan', label: 'Digit Span', unit: '', direction: 'up-is-good', colorVar: '--series-1' }],
   },
   {
     title: 'PVT',
+    link: 'https://pvt.gonzaga.edu/',
     subtitle: 'Average over three 3-minute trials',
     blocks: [{ key: 'pvtRt', label: 'Reaction Time', unit: 'ms', direction: 'down-is-good', colorVar: '--series-2' }],
   },
@@ -156,6 +158,15 @@ function renderCard(card, entries) {
   const title = document.createElement('h3');
   title.className = 'metric-card-title';
   title.textContent = card.title;
+  if (card.link) {
+    const link = document.createElement('a');
+    link.className = 'metric-card-link';
+    link.href = card.link;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = 'Take test ↗';
+    title.appendChild(link);
+  }
   section.appendChild(title);
 
   if (card.subtitle) {

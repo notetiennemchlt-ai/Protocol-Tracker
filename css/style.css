@@ -356,6 +356,19 @@ body {
   font-weight: 700;
 }
 
+.metric-card-link {
+  margin-left: 8px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.metric-card-link:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
 .metric-card-subtitle {
   margin: 0 0 14px;
   font-size: 11.5px;

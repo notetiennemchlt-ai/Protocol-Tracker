@@ -1,0 +1,39 @@
+{
+  "lastUpdated": "2026-09-07",
+  "categories": [
+    {
+      "name": "Light",
+      "items": [
+        {
+          "text": "Morning sunlight",
+          "status": "running",
+          "note": "2-10 min, as soon after waking as possible"
+        },
+        {
+          "text": "Sunlamp when it's dark out",
+          "status": "running",
+          "note": "Fallback only, much weaker than sunlight"
+        },
+        {
+          "text": "View the sunset",
+          "status": "running",
+          "note": "Within about an hour of sunset"
+        },
+        { "text": "Minimize lights around 8pm", "status": "running" },
+        { "text": "Keep evening lights low, never overhead", "status": "running" },
+        { "text": "Red screen filter on phone in the evening", "status": "not-started" }
+      ]
+    },
+    {
+      "name": "Tools",
+      "items": [
+        {
+          "text": "Naps under 90 minutes",
+          "status": "running",
+          "note": "Only when needed"
+        },
+        { "text": "NSDR to wind down", "status": "running" }
+      ]
+    }
+  ]
+}

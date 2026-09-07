@@ -6,10 +6,16 @@ Pages.
 
 ## How this works
 
-- `protocol.json` — the protocol sidebar. Edit this to add, remove, or
-  change status/notes on an item.
-- `js/protocol.js` — reads and renders `protocol.json`. Shouldn't need to
-  change when the protocol itself changes.
+- `protocol.json` — the focus protocol sidebar. Edit this to add, remove,
+  or change status/notes on an item.
+- `sleep.json` — the sleep protocol panel, below the shell. Same shape as
+  `protocol.json` (categories of items with `status`/`note`), but its own
+  series — no paired metrics. Edit this the same way.
+- `js/protocol-shared.js` — the rendering both panels share (status dots,
+  notes, phase sub-headers). Shouldn't need to change when either
+  protocol's content changes.
+- `js/protocol.js` / `js/sleep.js` — each just points `protocol-shared.js`
+  at its own JSON file and DOM ids.
 - `data/metrics.json` — the 30-day metrics tracker. `startDate` is Day 1 of
   the 30 days (the "Day X of 30" indicator is computed from it vs. today);
   `entries` is one object per day (`day: 0` is the baseline) with

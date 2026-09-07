@@ -294,6 +294,19 @@ body {
 }
 
 /* ==================================================================
+   Sleep protocol panel — separate from the shell above (no paired
+   metrics), full width, below it. Same checklist rendering as the focus
+   protocol sidebar (js/protocol-shared.js), its own data file (sleep.json).
+   ================================================================== */
+
+#sleep-panel {
+  margin-top: 24px;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+/* ==================================================================
    30-day metrics area — fills the shell to the right of the protocol
    sidebar. See js/metrics.js and js/chart.js.
    ================================================================== */

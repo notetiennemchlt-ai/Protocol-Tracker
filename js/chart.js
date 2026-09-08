@@ -5,8 +5,9 @@
 // One axis, fixed to the 30-day stretch: x always runs Day 0 -> Day 30,
 // regardless of how many days actually have data yet. Points are given for
 // every day in that range with value: null where a day hasn't been reached
-// or was missed — buildSegments() below breaks the line there instead of
-// interpolating across the gap or drawing it as zero.
+// or was missed — the line and area skip those days entirely, drawing a
+// straight run from the last known point to the next rather than a gap
+// or a drop to zero.
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const VBW = 560;
@@ -38,23 +39,6 @@ function fmtDate(iso) {
   const d = new Date(iso + 'T00:00:00');
   if (Number.isNaN(d.getTime())) return '';
   return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
-}
-
-// Consecutive runs of non-null points. A null (missed/not-yet-reached day)
-// ends the current run — the line never bridges across it.
-function buildSegments(points) {
-  const segments = [];
-  let current = [];
-  points.forEach((p) => {
-    if (p.value == null) {
-      if (current.length) segments.push(current);
-      current = [];
-    } else {
-      current.push(p);
-    }
-  });
-  if (current.length) segments.push(current);
-  return segments;
 }
 
 // points: [{ day, value, date }] for day 0..30 (value/date null where there's
@@ -113,23 +97,23 @@ export function renderMetricChart(svg, points, { colorVar, unit }) {
     svg.appendChild(label);
   });
 
-  // line + area, one polyline/polygon per unbroken run
+  // line + area — one continuous run across all known points, so a missed
+  // day (filtered out of `known`) draws a straight line to the next data
+  // point instead of a gap or a drop to zero.
   const baselineY = PAD_T + chartH;
-  buildSegments(points).forEach((seg) => {
-    const pts = seg.map((p) => [xFor(p.day), yFor(p.value)]);
-    if (pts.length > 1) {
-      const areaPts = [[pts[0][0], baselineY], ...pts, [pts[pts.length - 1][0], baselineY]];
-      const area = el('polygon', { points: areaPts.map((p) => p.join(',')).join(' ') });
-      area.setAttribute('fill', seriesColor);
-      area.setAttribute('opacity', '0.1');
-      svg.appendChild(area);
-    }
-    const line = el('polyline', { points: pts.map((p) => p.join(',')).join(' '), fill: 'none', 'stroke-width': 2 });
-    line.setAttribute('stroke', seriesColor);
-    line.setAttribute('stroke-linejoin', 'round');
-    line.setAttribute('stroke-linecap', 'round');
-    svg.appendChild(line);
-  });
+  const pts = known.map((p) => [xFor(p.day), yFor(p.value)]);
+  if (pts.length > 1) {
+    const areaPts = [[pts[0][0], baselineY], ...pts, [pts[pts.length - 1][0], baselineY]];
+    const area = el('polygon', { points: areaPts.map((p) => p.join(',')).join(' ') });
+    area.setAttribute('fill', seriesColor);
+    area.setAttribute('opacity', '0.1');
+    svg.appendChild(area);
+  }
+  const line = el('polyline', { points: pts.map((p) => p.join(',')).join(' '), fill: 'none', 'stroke-width': 2 });
+  line.setAttribute('stroke', seriesColor);
+  line.setAttribute('stroke-linejoin', 'round');
+  line.setAttribute('stroke-linecap', 'round');
+  svg.appendChild(line);
 
   // markers — one per known point (data is sparse: at most 31 days), each
   // with a surface-color ring so they stay legible crossing the line.

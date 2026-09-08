@@ -148,8 +148,11 @@ export function renderMetricChart(svg, points, { colorVar, unit }) {
     }
   });
 
-  // crosshair + tooltip (hidden until hover), snapping to the nearest
-  // known point — there's nothing to hover between gaps.
+  // crosshair + tooltip (hidden until hover). Hoverable range is every day
+  // from the first known point through the last — including a skipped day
+  // like Day 6, which sits right on the straight line drawn through it.
+  // Its value there is interpolated only to place the dot on that line;
+  // the tooltip says "No data" rather than showing a made-up number.
   const crosshair = el('line', { x1: 0, x2: 0, y1: PAD_T, y2: baselineY, stroke: gridColor, 'stroke-width': 1, opacity: 0 });
   svg.appendChild(crosshair);
   const hoverDot = el('circle', { r: 5, 'stroke-width': 2, opacity: 0 });
@@ -160,12 +163,32 @@ export function renderMetricChart(svg, points, { colorVar, unit }) {
   svg.appendChild(hit);
 
   const tooltip = svg.parentElement.querySelector('.chart-tooltip');
-  const knownPx = known.map((p) => xFor(p.day));
+  const firstDay = known[0].day;
+  const lastDay = known[known.length - 1].day;
+  const plotted = points.filter((p) => p.day >= firstDay && p.day <= lastDay);
+  const plottedPx = plotted.map((p) => xFor(p.day));
+
+  // Value at a skipped day's x-position, per its spot on the straight line
+  // between the known points on either side of it.
+  function interpolatedValue(day) {
+    let prev = known[0];
+    let next = known[known.length - 1];
+    for (let i = 0; i < known.length - 1; i++) {
+      if (known[i].day <= day && day <= known[i + 1].day) {
+        prev = known[i];
+        next = known[i + 1];
+        break;
+      }
+    }
+    if (next.day === prev.day) return prev.value;
+    const t = (day - prev.day) / (next.day - prev.day);
+    return prev.value + (next.value - prev.value) * t;
+  }
 
   function nearestIndex(pointerX) {
     let best = 0;
     let bestDist = Infinity;
-    knownPx.forEach((px, i) => {
+    plottedPx.forEach((px, i) => {
       const d = Math.abs(px - pointerX);
       if (d < bestDist) {
         bestDist = d;
@@ -176,21 +199,22 @@ export function renderMetricChart(svg, points, { colorVar, unit }) {
   }
 
   function showAt(i) {
-    const p = known[i];
+    const p = plotted[i];
+    const hasValue = p.value != null;
     const px = xFor(p.day);
-    const py = yFor(p.value);
+    const py = yFor(hasValue ? p.value : interpolatedValue(p.day));
     crosshair.setAttribute('x1', px.toFixed(1));
     crosshair.setAttribute('x2', px.toFixed(1));
     crosshair.setAttribute('opacity', '1');
     hoverDot.setAttribute('cx', px.toFixed(1));
     hoverDot.setAttribute('cy', py.toFixed(1));
     hoverDot.setAttribute('fill', p.day === 0 ? baselineColor : seriesColor);
-    hoverDot.setAttribute('opacity', '1');
+    hoverDot.setAttribute('opacity', hasValue ? '1' : '0.5');
 
     tooltip.innerHTML = '';
     const valueEl = document.createElement('div');
     valueEl.className = 'chart-tooltip-value';
-    valueEl.textContent = fmtValue(p.value, unit);
+    valueEl.textContent = hasValue ? fmtValue(p.value, unit) : 'No data';
     const dateEl = document.createElement('div');
     dateEl.className = 'chart-tooltip-date';
     dateEl.textContent = p.day === 0 ? `Baseline · ${fmtDate(p.date)}` : `Day ${p.day} · ${fmtDate(p.date)}`;

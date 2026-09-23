@@ -103,6 +103,21 @@ body {
 }
 
 /* ==================================================================
+   New-protocol banner — a single highlighted item announcing a protocol
+   just added, sitting above the shell. Reuses the protocol-item row
+   styling (dot + text + note) so it reads like an escaped-out entry from
+   the tracker below it.
+   ================================================================== */
+
+#new-protocol-banner {
+  margin-bottom: 20px;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 6px 14px;
+}
+
+/* ==================================================================
    Shell — protocol sidebar on the left, 30-day metrics filling the rest.
    ================================================================== */
 

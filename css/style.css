@@ -103,18 +103,41 @@ body {
 }
 
 /* ==================================================================
-   New-protocol banner — a single highlighted item announcing a protocol
-   just added, sitting above the shell. Reuses the protocol-item row
-   styling (dot + text + note) so it reads like an escaped-out entry from
-   the tracker below it.
+   Protocol column — the new-protocol banner stacked above the Current
+   Protocol Tracker, both at the sidebar's fixed width, sitting to the
+   left of the 30-day metrics at the same top height.
    ================================================================== */
 
+#protocol-column {
+  flex: 0 0 420px;
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* A single highlighted item announcing a protocol just added. Same card
+   treatment as the tracker below it (surface, border, radius) so it
+   stands out just as much, only shorter — reuses the protocol-item row
+   styling (dot + text + note). */
 #new-protocol-banner {
-  margin-bottom: 20px;
   background: var(--surface-1);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 6px 14px;
+  padding: 8px 16px;
+}
+
+.new-protocol-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--series-1);
+}
+
+.new-protocol-title {
+  font-weight: 700;
+  font-size: 15px;
 }
 
 /* ==================================================================
@@ -132,8 +155,7 @@ body {
    ================================================================== */
 
 #protocol-sidebar {
-  flex: 0 0 420px;
-  width: 420px;
+  width: 100%;
   position: sticky;
   top: 24px;
   max-height: calc(100vh - 48px);
@@ -533,10 +555,13 @@ body {
     flex-direction: column;
   }
 
-  #protocol-sidebar {
+  #protocol-column {
     flex: 1 1 auto;
-    position: static;
     width: 100%;
+  }
+
+  #protocol-sidebar {
+    position: static;
     max-height: none;
   }
 }

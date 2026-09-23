@@ -24,31 +24,36 @@
     </div>
   </header>
 
-  <section id="new-protocol-banner" aria-label="New Protocol">
-    <ul class="protocol-item-list">
-      <li class="protocol-item status-running">
-        <span class="protocol-status-dot" aria-hidden="true"></span>
-        <div class="protocol-item-body">
-          <div class="protocol-item-line">
-            <span class="protocol-item-text">New* Dopamine Detox</span>
-          </div>
-          <div class="protocol-item-note">Implemented personally - not a protocol Andrew Huberman directly talked about</div>
-        </div>
-      </li>
-    </ul>
-  </section>
-
   <div id="shell">
-    <aside id="protocol-sidebar" aria-label="Current Protocol Tracker">
-      <div class="protocol-header">
-        <h2 class="protocol-title">
-          Current Protocol Tracker
-          <span class="protocol-title-note">*No supplements included</span>
-        </h2>
-        <div id="protocol-updated" class="protocol-updated"></div>
-      </div>
-      <div id="protocol-body" class="protocol-body"></div>
-    </aside>
+    <div id="protocol-column">
+      <section id="new-protocol-banner" aria-label="New Protocol">
+        <ul class="protocol-item-list">
+          <li class="protocol-item status-running">
+            <span class="protocol-status-dot" aria-hidden="true"></span>
+            <div class="protocol-item-body">
+              <div class="protocol-item-line">
+                <span class="new-protocol-badge">New*</span>
+              </div>
+              <div class="protocol-item-line">
+                <span class="protocol-item-text new-protocol-title">Dopamine Detox</span>
+              </div>
+              <div class="protocol-item-note">Implemented personally - not a protocol Andrew Huberman directly talked about</div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <aside id="protocol-sidebar" aria-label="Current Protocol Tracker">
+        <div class="protocol-header">
+          <h2 class="protocol-title">
+            Current Protocol Tracker
+            <span class="protocol-title-note">*No supplements included</span>
+          </h2>
+          <div id="protocol-updated" class="protocol-updated"></div>
+        </div>
+        <div id="protocol-body" class="protocol-body"></div>
+      </aside>
+    </div>
 
     <main id="metrics-area" aria-label="30-Day Focus Metrics">
       <div class="metrics-header">

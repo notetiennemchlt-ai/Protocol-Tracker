@@ -65,7 +65,12 @@ function seriesFor(entries, key) {
   const points = [];
   for (let day = 0; day <= TOTAL_DAYS; day++) {
     const entry = byDay.get(day);
-    points.push({ day, date: entry ? entry.date : null, value: entry && entry[key] != null ? entry[key] : null });
+    points.push({
+      day,
+      date: entry ? entry.date : null,
+      value: entry && entry[key] != null ? entry[key] : null,
+      note: entry && entry.notes ? entry.notes[key] : null,
+    });
   }
   return points;
 }

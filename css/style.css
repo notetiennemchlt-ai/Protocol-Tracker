@@ -521,6 +521,11 @@ body {
   font-weight: 600;
 }
 
+.chart-note-label {
+  font-size: 9.5px;
+  font-style: italic;
+}
+
 .chart-tooltip {
   position: absolute;
   transform: translate(-50%, -130%);
@@ -548,6 +553,13 @@ body {
 .chart-tooltip-date {
   color: var(--text-muted);
   font-size: 11px;
+}
+
+.chart-tooltip-note {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-style: italic;
+  margin-top: 2px;
 }
 
 @media (max-width: 780px) {

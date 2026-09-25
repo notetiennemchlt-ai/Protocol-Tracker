@@ -146,6 +146,19 @@ export function renderMetricChart(svg, points, { colorVar, unit }) {
       label.textContent = fmtValue(p.value, unit);
       svg.appendChild(label);
     }
+
+    if (p.note) {
+      const noteAnchor = x + 8 > VBW - 40 ? 'end' : 'start';
+      const note = el('text', {
+        x: Math.min(x + 8, VBW - 4),
+        y: (y + (isLatest ? 20 : -10)).toFixed(1),
+        'text-anchor': noteAnchor,
+        class: 'chart-note-label',
+      });
+      note.setAttribute('fill', textMuted);
+      note.textContent = p.note;
+      svg.appendChild(note);
+    }
   });
 
   // crosshair + tooltip (hidden until hover). Hoverable range is every day
@@ -220,6 +233,12 @@ export function renderMetricChart(svg, points, { colorVar, unit }) {
     dateEl.textContent = p.day === 0 ? `Baseline · ${fmtDate(p.date)}` : `Day ${p.day} · ${fmtDate(p.date)}`;
     tooltip.appendChild(valueEl);
     tooltip.appendChild(dateEl);
+    if (p.note) {
+      const noteEl = document.createElement('div');
+      noteEl.className = 'chart-tooltip-note';
+      noteEl.textContent = p.note;
+      tooltip.appendChild(noteEl);
+    }
 
     tooltip.style.left = `${(px / VBW) * 100}%`;
     tooltip.style.top = `${(py / VBH) * 100}%`;

@@ -28,11 +28,12 @@
     <div id="protocol-column">
       <section id="new-protocol-banner" aria-label="New Protocol">
         <ul class="protocol-item-list">
-          <li class="protocol-item status-running">
+          <li class="protocol-item" id="dopamine-detox-item">
             <span class="protocol-status-dot" aria-hidden="true"></span>
             <div class="protocol-item-body">
               <div class="protocol-item-line">
                 <span class="new-protocol-badge">New*</span>
+                <span class="new-protocol-start-note" id="dopamine-detox-start-note">Starts on October 1st</span>
               </div>
               <div class="protocol-item-line">
                 <span class="protocol-item-text new-protocol-title">Dopamine Detox</span>
@@ -76,6 +77,7 @@
   </section>
 </div>
 
+<script type="module" src="js/new-protocol-banner.js"></script>
 <script type="module" src="js/protocol.js"></script>
 <script type="module" src="js/sleep.js"></script>
 <script type="module" src="js/metrics.js"></script>

@@ -140,6 +140,16 @@ body {
   font-size: 15px;
 }
 
+/* Shown only while the item is still pending its start date (see
+   js/new-protocol-banner.js) — sits opposite the New* badge on the same
+   line via .protocol-item-line's justify-content: space-between. */
+.new-protocol-start-note {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
 /* ==================================================================
    Shell — protocol sidebar on the left, 30-day metrics filling the rest.
    ================================================================== */

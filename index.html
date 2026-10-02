@@ -75,18 +75,31 @@
     </main>
   </div>
 
-  <section id="sleep-panel" aria-label="Current Sleep Protocol">
-    <div class="protocol-header">
-      <h2 class="protocol-title">Sleep Protocol Tracker</h2>
-      <div id="sleep-updated" class="protocol-updated"></div>
-    </div>
-    <div id="sleep-body" class="protocol-body"></div>
-  </section>
+  <div id="bottom-row">
+    <section id="sleep-panel" class="secondary-panel" aria-label="Current Sleep Protocol">
+      <div class="protocol-header">
+        <h2 class="protocol-title">Sleep Protocol Tracker</h2>
+        <div id="sleep-updated" class="protocol-updated"></div>
+      </div>
+      <div id="sleep-body" class="protocol-body"></div>
+    </section>
+
+    <!-- Split out of the Current Protocol Tracker — learning technique,
+         not focus/motivation, so it sits here instead. See js/learning.js. -->
+    <section id="learning-panel" class="secondary-panel" aria-label="Learning Protocol Tracker">
+      <div class="protocol-header">
+        <h2 class="protocol-title">Learning Protocol Tracker</h2>
+        <div id="learning-updated" class="protocol-updated"></div>
+      </div>
+      <div id="learning-body" class="protocol-body"></div>
+    </section>
+  </div>
 </div>
 
 <script type="module" src="js/new-protocol-banner.js"></script>
 <script type="module" src="js/protocol.js"></script>
 <script type="module" src="js/sleep.js"></script>
+<script type="module" src="js/learning.js"></script>
 <script type="module" src="js/metrics.js"></script>
 </body>
 </html>

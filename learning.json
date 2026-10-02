@@ -1,0 +1,21 @@
+{
+  "lastUpdated": "2026-10-01",
+  "categories": [
+    {
+      "name": "Enforce Learning",
+      "items": [
+        {
+          "text": "Embrace frustration when learning and reinforce the feeling",
+          "status": "running",
+          "note": "When applicable"
+        },
+        {
+          "text": "Test yourself immediately after exposure",
+          "status": "running",
+          "note": "Open-ended short answer, not multiple choice"
+        },
+        { "text": "Teach the material", "status": "running" }
+      ]
+    }
+  ]
+}

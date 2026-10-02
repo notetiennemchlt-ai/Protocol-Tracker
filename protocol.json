@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-01",
+  "lastUpdated": "2026-10-01",
   "categories": [
     {
       "name": "Foundations",
@@ -37,7 +37,11 @@
     {
       "name": "Timing and Environment",
       "items": [
-        { "text": "Match background to arousal level", "status": "running" },
+        {
+          "text": "Match background to arousal level",
+          "status": "dropped",
+          "note": "Clashes with other protocols"
+        },
         { "text": "Remove Interruptions as much as possible", "status": "running" },
         { "text": "Elevate screen so I'm looking up or straight ahead", "status": "running" },
         { "text": "Set the visual window (sit close enough that the work fills my field of view)", "status": "running" },
@@ -103,24 +107,19 @@
       "items": [
         {
           "text": "Blunt reward schedules",
-          "status": "running",
-          "note": "When applicable"
+          "status": "dropped",
+          "note": "Clashes with attaching reward to effort"
         },
         {
           "text": "Randomized reward schedules",
-          "status": "running",
-          "note": "When applicable"
+          "status": "dropped",
+          "note": "Clashes with attaching reward to effort"
         },
-        { "text": "Attach reward to effort", "status": "running", "note": "When applicable - if struggling to work" },
+        { "text": "Attach reward to effort", "status": "running", "note": "As much as possible" },
         {
           "text": "Dopamine subjectivity",
           "status": "dropped",
           "note": "Interferes with attaching reward to effort (can't do both) — attaching reward to effort works better for me"
-        },
-        {
-          "text": "Do something harder when procrastinating",
-          "status": "running",
-          "note": "When unmotivated/needed"
         }
       ]
     },
@@ -140,9 +139,14 @@
         {
           "text": "NSDR",
           "status": "running",
-          "note": "When needed. A guided script, not a nap. Any time of day"
+          "note": "Before my first work session of the day"
         },
         { "text": "Superoxygenated breathing", "status": "running", "note": "When needed" },
+        {
+          "text": "Do something harder when procrastinating",
+          "status": "running",
+          "note": "When needed"
+        },
         {
           "text": "Morning exercise before deep focus work",
           "status": "running",
@@ -158,22 +162,6 @@
           "status": "dropped",
           "note": "Not used in regards to focus"
         }
-      ]
-    },
-    {
-      "name": "Enforce Learning",
-      "items": [
-        {
-          "text": "Embrace frustration when learning and reinforce the feeling",
-          "status": "running",
-          "note": "When applicable"
-        },
-        {
-          "text": "Test yourself immediately after exposure",
-          "status": "running",
-          "note": "Open-ended short answer, not multiple choice"
-        },
-        { "text": "Teach the material", "status": "running" }
       ]
     }
   ]

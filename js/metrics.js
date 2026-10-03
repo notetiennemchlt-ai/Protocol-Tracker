@@ -6,7 +6,15 @@
 import { renderMetricChart } from './chart.js';
 
 const DATA_URL = 'data/metrics.json';
-const TOTAL_DAYS = 30;
+
+// The chart/day-count used to be fixed at 30 — now it ages up in 15-day
+// steps (30 -> 45 -> 60) as the challenge actually runs past each
+// threshold, and stops growing once it hits CEILING_DAYS, per request.
+// Starting the floor at 30 (not 15) keeps an early, mostly-empty chart
+// from looking tiny on day 1 — same visual starting point as before.
+const CEILING_DAYS = 60;
+const STEP_DAYS = 15;
+const MIN_TOTAL_DAYS = 30;
 
 // direction: 'up-is-good' or 'down-is-good' — which way a delta from
 // baseline is colored green vs red.
@@ -46,24 +54,39 @@ function fmtDate(iso) {
   return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
-// Day X of 30, from today vs. the start date (Day 1). Before the start
-// date it's Day 0 (baseline period); after day 30 it stays capped at 30.
-function computeDayLabel(startDate) {
+// N itself grows in 15-day steps as the challenge runs on (30 -> 45 -> 60),
+// never past CEILING_DAYS — see the constants above.
+function adaptiveTotalDays(rawDay) {
+  return Math.min(CEILING_DAYS, Math.max(MIN_TOTAL_DAYS, Math.ceil(rawDay / STEP_DAYS) * STEP_DAYS));
+}
+
+// Day X of N, from today vs. the start date (Day 1). Before the start date
+// it's Day 0 (baseline period); once N hits CEILING_DAYS, day stays capped
+// there too. Returns `total` alongside the label text so the chart's x-axis
+// (see renderMetricChart's maxDay) can stay in lockstep with this same N,
+// rather than each metric card picking its own independently.
+function computeDayInfo(startDate) {
   const start = new Date(`${startDate}T00:00:00`);
-  if (Number.isNaN(start.getTime())) return '';
+  if (Number.isNaN(start.getTime())) return { text: '', total: MIN_TOTAL_DAYS };
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const diffDays = Math.floor((today - start) / 86400000);
-  const day = Math.max(0, Math.min(diffDays + 1, TOTAL_DAYS));
-  return `Day ${day} of ${TOTAL_DAYS}`;
+  const rawDay = diffDays + 1;
+  const total = adaptiveTotalDays(rawDay);
+  const day = Math.max(0, Math.min(rawDay, total));
+  return { text: `Day ${day} of ${total}`, total };
 }
 
-// Full Day 0..30 series for one metric key, filling in null for any day
-// with no entry (not reached yet, or the field was missed that day).
+// Full Day 0..CEILING_DAYS series for one metric key, filling in null for
+// any day with no entry (not reached yet, or the field was missed that
+// day) — always built out to the hard ceiling regardless of the current
+// adaptive total, since that's cheap and means the chart never has to
+// re-fetch as the total grows; renderMetricChart's maxDay decides how much
+// of this is actually shown.
 function seriesFor(entries, key) {
   const byDay = new Map(entries.map((e) => [e.day, e]));
   const points = [];
-  for (let day = 0; day <= TOTAL_DAYS; day++) {
+  for (let day = 0; day <= CEILING_DAYS; day++) {
     const entry = byDay.get(day);
     points.push({
       day,
@@ -82,7 +105,7 @@ function deltaDirection(direction, delta) {
   return isGood ? 'good' : 'bad';
 }
 
-function renderBlock(block, points, { showLabel }) {
+function renderBlock(block, points, { showLabel, totalDays }) {
   const wrap = document.createElement('div');
   wrap.className = 'metric-block';
 
@@ -149,14 +172,14 @@ function renderBlock(block, points, { showLabel }) {
 
   const svg = chartWrap.querySelector('.chart-svg');
   const empty = chartWrap.querySelector('.chart-empty');
-  const hasChart = renderMetricChart(svg, points, { colorVar: block.colorVar, unit: block.unit });
+  const hasChart = renderMetricChart(svg, points, { colorVar: block.colorVar, unit: block.unit, maxDay: totalDays });
   svg.style.display = hasChart ? '' : 'none';
   empty.style.display = hasChart ? 'none' : '';
 
   return wrap;
 }
 
-function renderCard(card, entries) {
+function renderCard(card, entries, totalDays) {
   const section = document.createElement('section');
   section.className = 'metric-card';
 
@@ -183,7 +206,7 @@ function renderCard(card, entries) {
 
   const showLabel = card.blocks.length > 1;
   card.blocks.forEach((block) => {
-    section.appendChild(renderBlock(block, seriesFor(entries, block.key), { showLabel }));
+    section.appendChild(renderBlock(block, seriesFor(entries, block.key), { showLabel, totalDays }));
   });
 
   return section;
@@ -196,11 +219,12 @@ async function renderMetrics() {
 
   try {
     const data = await loadMetrics();
-    dayIndicator.textContent = computeDayLabel(data.startDate);
+    const { text: dayText, total: totalDays } = computeDayInfo(data.startDate);
+    dayIndicator.textContent = dayText;
     updatedEl.textContent = data.lastUpdated ? `Data last updated: ${fmtDate(data.lastUpdated)}` : '';
     cardsRoot.innerHTML = '';
     const entries = data.entries || [];
-    CARDS.forEach((card) => cardsRoot.appendChild(renderCard(card, entries)));
+    CARDS.forEach((card) => cardsRoot.appendChild(renderCard(card, entries, totalDays)));
   } catch (err) {
     console.error(err);
     dayIndicator.textContent = '';

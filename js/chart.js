@@ -1,13 +1,14 @@
-// Hand-rolled SVG line chart for the 30-day metrics. Mark specs (2px line,
+// Hand-rolled SVG line chart for the focus metrics. Mark specs (2px line,
 // >=8px marker with a 2px surface ring, ~10% opacity area fill, hairline
 // solid gridlines, sparing direct labels) follow the dataviz skill.
 //
-// One axis, fixed to the 30-day stretch: x always runs Day 0 -> Day 30,
-// regardless of how many days actually have data yet. Points are given for
-// every day in that range with value: null where a day hasn't been reached
-// or was missed — the line and area skip those days entirely, drawing a
-// straight run from the last known point to the next rather than a gap
-// or a drop to zero.
+// One axis, x always running Day 0 -> maxDay (passed in by the caller —
+// see js/metrics.js's adaptiveTotalDays, which ages it from 30 up to 60
+// in 15-day steps as the challenge runs on, then holds there). Points are
+// given for every day in that range with value: null where a day hasn't
+// been reached or was missed — the line and area skip those days
+// entirely, drawing a straight run from the last known point to the next
+// rather than a gap or a drop to zero.
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const VBW = 560;
@@ -16,7 +17,6 @@ const PAD_L = 40;
 const PAD_R = 16;
 const PAD_T = 16;
 const PAD_B = 24;
-const MAX_DAY = 30;
 
 function el(tag, attrs = {}) {
   const e = document.createElementNS(SVG_NS, tag);
@@ -41,10 +41,10 @@ function fmtDate(iso) {
   return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
 }
 
-// points: [{ day, value, date }] for day 0..30 (value/date null where there's
-// no entry). Returns true if it drew a chart, false if there's no data yet
-// (caller shows the empty state instead).
-export function renderMetricChart(svg, points, { colorVar, unit }) {
+// points: [{ day, value, date }] for day 0..maxDay (value/date null where
+// there's no entry). Returns true if it drew a chart, false if there's no
+// data yet (caller shows the empty state instead).
+export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) {
   svg.innerHTML = '';
   svg.setAttribute('viewBox', `0 0 ${VBW} ${VBH}`);
 
@@ -68,7 +68,7 @@ export function renderMetricChart(svg, points, { colorVar, unit }) {
   const chartW = VBW - PAD_L - PAD_R;
   const chartH = VBH - PAD_T - PAD_B;
 
-  const xFor = (day) => PAD_L + (day / MAX_DAY) * chartW;
+  const xFor = (day) => PAD_L + (day / maxDay) * chartW;
   const yFor = (v) => PAD_T + chartH - ((v - min) / (max - min)) * chartH;
 
   // y gridlines: min / mid / max of the actual data, with muted value labels
@@ -83,13 +83,18 @@ export function renderMetricChart(svg, points, { colorVar, unit }) {
     svg.appendChild(label);
   });
 
-  // x-axis: Day 0 / 15 / 30, fixed regardless of data extent
-  [0, 15, 30].forEach((d) => {
+  // x-axis: Day 0, every 15 days, up through maxDay — maxDay itself grows
+  // (30 -> 45 -> 60) as the challenge runs on, so this just naturally picks
+  // up more ticks rather than needing its own separate stepping logic.
+  const xTicks = [];
+  for (let d = 0; d < maxDay; d += 15) xTicks.push(d);
+  xTicks.push(maxDay);
+  xTicks.forEach((d) => {
     const x = xFor(d);
     const label = el('text', {
       x: x.toFixed(1),
       y: VBH - 6,
-      'text-anchor': d === 0 ? 'start' : d === MAX_DAY ? 'end' : 'middle',
+      'text-anchor': d === 0 ? 'start' : d === maxDay ? 'end' : 'middle',
       class: 'chart-axis-label',
     });
     label.setAttribute('fill', textMuted);

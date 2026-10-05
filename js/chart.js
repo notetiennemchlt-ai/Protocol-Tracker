@@ -104,13 +104,13 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
 
   const baselineY = PAD_T + chartH;
 
-  // Day 30 divider — "Start of updated protocol", a fixed reference line
-  // shown on every chart (not just when Day 30 itself has a value) so all
-  // three metrics read against the same before/after split. Drawn behind
-  // the line/area/markers (before them in document order) so real data
-  // stays visually on top of it. Label runs vertically alongside the line
-  // — the chart's too narrow for it to fit horizontally without colliding
-  // with the y-axis value labels or another day tick.
+  // Day 30 divider — "New protocol", a fixed reference line shown on
+  // every chart (not just when Day 30 itself has a value) so all three
+  // metrics read against the same before/after split. Drawn behind the
+  // line/area/markers (before them in document order) so real data stays
+  // visually on top of it. Label sits small, horizontal, and centered
+  // right above the line's own top end, in the PAD_T margin above the
+  // plot area rather than crossing through it.
   if (maxDay >= 30) {
     const dividerX = xFor(30);
     svg.appendChild(
@@ -125,14 +125,13 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
       })
     );
     const dividerLabel = el('text', {
-      x: (dividerX + 5).toFixed(1),
-      y: (PAD_T + 4).toFixed(1),
-      'text-anchor': 'start',
+      x: dividerX.toFixed(1),
+      y: (PAD_T - 5).toFixed(1),
+      'text-anchor': 'middle',
       class: 'chart-divider-label',
-      transform: `rotate(90, ${(dividerX + 5).toFixed(1)}, ${(PAD_T + 4).toFixed(1)})`,
     });
     dividerLabel.setAttribute('fill', textMuted);
-    dividerLabel.textContent = 'Start of updated protocol';
+    dividerLabel.textContent = 'New protocol';
     svg.appendChild(dividerLabel);
   }
 

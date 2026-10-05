@@ -103,9 +103,12 @@ body {
 }
 
 /* ==================================================================
-   Protocol column — the new-protocol banner stacked above the Current
-   Protocol Tracker, both at the sidebar's fixed width, sitting to the
-   left of the 30-day metrics at the same top height.
+   Protocol column — the new-protocol banner, then all three trackers
+   (Focus/Current Protocol, Sleep, Learning) stacked in that order, all
+   at this column's fixed width (see .secondary-panel below — column's
+   own align-items:stretch default is what makes each one match it, no
+   width set on them individually). Sits to the left of the 30-day
+   metrics at the same top height.
    ================================================================== */
 
 #protocol-column {
@@ -163,19 +166,12 @@ body {
 }
 
 /* ==================================================================
-   Current Protocol Tracker sidebar. See js/protocol.js.
+   Current Protocol Tracker. See js/protocol.js. Card chrome (surface,
+   border, radius, width) all comes from .secondary-panel now — it used
+   to stick to the viewport and scroll internally on its own, but that's
+   gone per request: the whole thing prints out in full, and the page
+   itself is what scrolls.
    ================================================================== */
-
-#protocol-sidebar {
-  width: 100%;
-  position: sticky;
-  top: 24px;
-  max-height: calc(100vh - 48px);
-  overflow-y: auto;
-  background: var(--surface-1);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-}
 
 .protocol-header {
   padding: 24px 24px 16px;
@@ -343,24 +339,23 @@ body {
 }
 
 /* ==================================================================
-   Bottom row — Sleep Protocol Tracker and Learning Protocol Tracker,
-   side by side below the shell above (neither has paired metrics). Same
-   checklist rendering as the focus protocol sidebar (js/protocol-
-   shared.js), each its own data file (sleep.json / learning.json).
+   Shared card chrome for every tracker stacked in #protocol-column —
+   Current Protocol Tracker, Sleep Protocol Tracker, Learning Protocol
+   Tracker (Focus, then Sleep, then Learning, top to bottom — same order
+   as the markup; this is purely visual styling, no layout here). Same
+   checklist rendering underneath all three (js/protocol-shared.js), each
+   its own data file (protocol.json / sleep.json / learning.json).
    Learning used to be a category inside Current Protocol Tracker — split
    out since it's about learning technique, not focus/motivation.
+   flex: 0 0 auto so none of them stretch or shrink to fill the column's
+   height — each just takes whatever height its own content needs, and
+   #protocol-column's own align-items:stretch default (flex-direction:
+   column) is what makes every one of them match the column's width
+   without needing a width set here directly.
    ================================================================== */
 
-#bottom-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
-  margin-top: 24px;
-}
-
 .secondary-panel {
-  flex: 1 1 0;
-  min-width: 0;
+  flex: 0 0 auto;
   background: var(--surface-1);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -593,15 +588,6 @@ body {
   #protocol-column {
     flex: 1 1 auto;
     width: 100%;
-  }
-
-  #protocol-sidebar {
-    position: static;
-    max-height: none;
-  }
-
-  #bottom-row {
-    flex-direction: column;
   }
 }
 

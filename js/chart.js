@@ -102,10 +102,43 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
     svg.appendChild(label);
   });
 
+  const baselineY = PAD_T + chartH;
+
+  // Day 30 divider — "Start of updated protocol", a fixed reference line
+  // shown on every chart (not just when Day 30 itself has a value) so all
+  // three metrics read against the same before/after split. Drawn behind
+  // the line/area/markers (before them in document order) so real data
+  // stays visually on top of it. Label runs vertically alongside the line
+  // — the chart's too narrow for it to fit horizontally without colliding
+  // with the y-axis value labels or another day tick.
+  if (maxDay >= 30) {
+    const dividerX = xFor(30);
+    svg.appendChild(
+      el('line', {
+        x1: dividerX.toFixed(1),
+        x2: dividerX.toFixed(1),
+        y1: PAD_T,
+        y2: baselineY,
+        stroke: textMuted,
+        'stroke-width': 1,
+        'stroke-dasharray': '3,3',
+      })
+    );
+    const dividerLabel = el('text', {
+      x: (dividerX + 5).toFixed(1),
+      y: (PAD_T + 4).toFixed(1),
+      'text-anchor': 'start',
+      class: 'chart-divider-label',
+      transform: `rotate(90, ${(dividerX + 5).toFixed(1)}, ${(PAD_T + 4).toFixed(1)})`,
+    });
+    dividerLabel.setAttribute('fill', textMuted);
+    dividerLabel.textContent = 'Start of updated protocol';
+    svg.appendChild(dividerLabel);
+  }
+
   // line + area — one continuous run across all known points, so a missed
   // day (filtered out of `known`) draws a straight line to the next data
   // point instead of a gap or a drop to zero.
-  const baselineY = PAD_T + chartH;
   const pts = known.map((p) => [xFor(p.day), yFor(p.value)]);
   if (pts.length > 1) {
     const areaPts = [[pts[0][0], baselineY], ...pts, [pts[pts.length - 1][0], baselineY]];
@@ -150,19 +183,6 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
       label.setAttribute('fill', textSecondary);
       label.textContent = fmtValue(p.value, unit);
       svg.appendChild(label);
-    }
-
-    if (p.note) {
-      const noteAnchor = x + 8 > VBW - 40 ? 'end' : 'start';
-      const note = el('text', {
-        x: Math.min(x + 8, VBW - 4),
-        y: (y + (isLatest ? 20 : -10)).toFixed(1),
-        'text-anchor': noteAnchor,
-        class: 'chart-note-label',
-      });
-      note.setAttribute('fill', textMuted);
-      note.textContent = p.note;
-      svg.appendChild(note);
     }
   });
 

@@ -544,9 +544,9 @@ body {
   font-weight: 600;
 }
 
-.chart-note-label {
-  font-size: 9.5px;
-  font-style: italic;
+.chart-divider-label {
+  font-size: 9px;
+  letter-spacing: 0.01em;
 }
 
 .chart-tooltip {

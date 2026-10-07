@@ -233,6 +233,27 @@
       "digitSpan": 10,
       "pvtRt": 223,
       "focusMinutes": 60
+    },
+    {
+      "day": 33,
+      "date": "2026-10-03",
+      "digitSpan": 9.3,
+      "pvtRt": 216,
+      "focusMinutes": 30
+    },
+    {
+      "day": 34,
+      "date": "2026-10-04",
+      "digitSpan": 10.6,
+      "pvtRt": 211,
+      "focusMinutes": 45
+    },
+    {
+      "day": 35,
+      "date": "2026-10-05",
+      "digitSpan": 10,
+      "pvtRt": 217,
+      "focusMinutes": 30
     }
   ]
 }

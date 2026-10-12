@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "2026-10-01",
+  "lastUpdated": "2026-10-12",
   "categories": [
     {
       "name": "Foundations",
       "subtitle": "always on",
       "items": [
-        { "text": "Prioritize sleep", "status": "running", "note": "At least 8 hours" },
-        { "text": "Low sugar diet", "status": "running", "note": "Under 25 grams/day" },
+        { "text": "Prioritize sleep", "status": "running", "note": "At least 8 hours, high quality and regularity" },
+        { "text": "Low sugar diet", "status": "running", "note": "Under ~35g/day" },
         { "text": "Maintain good social connection", "status": "running" },
         { "text": "Zero scrolling + less smartphone use", "status": "running" },
         { "text": "No layering dopamine", "status": "running" },

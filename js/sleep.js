@@ -1,4 +1,4 @@
-// The Current Sleep Protocol panel: reads sleep.json (sitting next to
+// The "Sleep Protocols I've learned about" dropdown: reads sleep.json (sitting next to
 // index.html) and renders it, same as js/protocol.js does for the focus
 // protocol. Separate data file and separate panel — this series has no
 // paired metrics. To change what's shown, edit sleep.json.

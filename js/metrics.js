@@ -16,8 +16,8 @@ const CEILING_DAYS = 60;
 const STEP_DAYS = 15;
 const MIN_TOTAL_DAYS = 30;
 
-// direction: 'up-is-good' or 'down-is-good' — which way a delta from
-// the first logged day is colored green vs red.
+// direction: 'up-is-good' or 'down-is-good' — drives the Higher/Lower is
+// better tag.
 // colorVar: next unused slot in the app's fixed categorical order
 // (css/style.css --series-1..4) — never reassign/cycle these. --series-3
 // is currently unused (freed when PVT lapses was dropped) — leave it open
@@ -77,7 +77,7 @@ function computeDayInfo(startDate) {
   return { text: `Day ${day} of ${total}`, total };
 }
 
-// Full Day 0..CEILING_DAYS series for one metric key, filling in null for
+// Full Day 1..CEILING_DAYS series for one metric key, filling in null for
 // any day with no entry (not reached yet, or the field was missed that
 // day) — always built out to the hard ceiling regardless of the current
 // adaptive total, since that's cheap and means the chart never has to
@@ -86,7 +86,7 @@ function computeDayInfo(startDate) {
 function seriesFor(entries, key) {
   const byDay = new Map(entries.map((e) => [e.day, e]));
   const points = [];
-  for (let day = 0; day <= CEILING_DAYS; day++) {
+  for (let day = 1; day <= CEILING_DAYS; day++) {
     const entry = byDay.get(day);
     points.push({
       day,
@@ -96,13 +96,6 @@ function seriesFor(entries, key) {
     });
   }
   return points;
-}
-
-function deltaDirection(direction, delta) {
-  if (delta === 0) return 'flat';
-  const up = delta > 0;
-  const isGood = direction === 'up-is-good' ? up : !up;
-  return isGood ? 'good' : 'bad';
 }
 
 function renderBlock(block, points, { showLabel, totalDays }) {
@@ -123,35 +116,13 @@ function renderBlock(block, points, { showLabel, totalDays }) {
   current.className = 'metric-current';
 
   const known = points.filter((p) => p.value != null);
-  const first = known.length ? known[0] : null;
   const latest = known.length ? known[known.length - 1] : null;
 
   const valueEl = document.createElement('span');
   valueEl.className = 'metric-current-value';
-  const deltaEl = document.createElement('span');
-  deltaEl.className = 'metric-current-delta';
-
-  if (!latest) {
-    valueEl.textContent = '—';
-    deltaEl.textContent = 'No entries yet';
-    deltaEl.classList.add('flat');
-  } else {
-    valueEl.textContent = block.unit ? `${latest.value} ${block.unit}` : `${latest.value}`;
-    if (latest.day === first.day) {
-      deltaEl.textContent = `Day ${first.day}`;
-      deltaEl.classList.add('flat');
-    } else {
-      const delta = Math.round((latest.value - first.value) * 10) / 10;
-      const dir = deltaDirection(block.direction, delta);
-      const arrow = delta > 0 ? '▲' : delta < 0 ? '▼' : '—';
-      const unitPart = block.unit ? ` ${block.unit}` : '';
-      deltaEl.textContent = `${arrow} ${Math.abs(delta)}${unitPart} vs Day ${first.day}`;
-      deltaEl.classList.add(dir);
-    }
-  }
+  valueEl.textContent = !latest ? '—' : block.unit ? `${latest.value} ${block.unit}` : `${latest.value}`;
 
   current.appendChild(valueEl);
-  current.appendChild(deltaEl);
   head.appendChild(current);
 
   const tag = document.createElement('span');

@@ -26,6 +26,17 @@
   --bad: #e5544f;
 
   --gridline: rgba(255, 255, 255, 0.07);
+
+  /* Category colors for the learned-about lists — text/bullets only, so
+     lighter tints than the chart series to stay readable on the surface. */
+  --cat-1: #6ea8f0;
+  --cat-2: #ef8a5c;
+  --cat-3: #4fc49a;
+  --cat-4: #e3b23c;
+  --cat-5: #b08cf0;
+  --cat-6: #ee7fae;
+  --cat-7: #4cc3d4;
+  --cat-8: #a9c25a;
 }
 
 * {
@@ -67,9 +78,27 @@ body {
 }
 
 .header-title {
+  margin: 0;
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.01em;
+}
+
+/* Site title, sitting on the same line as the name, set off by a thin
+   divider and a lighter weight so the name still reads first. */
+.header-site-title {
+  margin-left: 10px;
+  padding-left: 12px;
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.header-disclaimer {
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .header-tagline {
@@ -175,7 +204,7 @@ details[open] > .version-summary::before {
 
 /* ==================================================================
    Protocol column — "Protocols I've learned about" on top, then the
-   Sleep and Learning trackers, all at this column's fixed width (see
+   Sleep and Learning learned-about dropdowns, all at this column's fixed width (see
    .secondary-panel below). Sits between the versions column and the
    metrics, at the same top height.
    ================================================================== */
@@ -188,9 +217,53 @@ details[open] > .version-summary::before {
   gap: 16px;
 }
 
-/* Learned-about items: no status dot, nothing crossed off. */
-.learned-item {
-  padding-left: 4px;
+/* Sleep / Learning learned-about lists, collapsed under the focus one.
+   Same summary styling as the version dropdowns. */
+.learned-dropdown-updated {
+  padding: 12px 24px 0;
+}
+
+.learned-dropdown .protocol-body {
+  padding-top: 12px;
+}
+
+/* ---------- learned-about lists (js/protocol-shared.js) ----------
+   Bulleted, no status dot, nothing crossed off. Each category takes one
+   color from the --cat ramp for its title and bullets. */
+.learned-category.cat-1 { --cat: var(--cat-1); }
+.learned-category.cat-2 { --cat: var(--cat-2); }
+.learned-category.cat-3 { --cat: var(--cat-3); }
+.learned-category.cat-4 { --cat: var(--cat-4); }
+.learned-category.cat-5 { --cat: var(--cat-5); }
+.learned-category.cat-6 { --cat: var(--cat-6); }
+.learned-category.cat-7 { --cat: var(--cat-7); }
+.learned-category.cat-8 { --cat: var(--cat-8); }
+
+.learned-category .protocol-category-title {
+  color: var(--cat);
+}
+
+.learned-list {
+  list-style: disc;
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.learned-item::marker {
+  color: var(--cat);
+}
+
+.learned-item-text {
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.learned-item .protocol-subitem-list {
+  list-style: circle;
 }
 
 /* ==================================================================
@@ -515,14 +588,7 @@ details[open] > .version-summary::before {
   line-height: 1;
 }
 
-.metric-current-delta {
-  font-size: 12px;
-  font-weight: 600;
-}
 
-.metric-current-delta.good { color: var(--good); }
-.metric-current-delta.bad { color: var(--bad); }
-.metric-current-delta.flat { color: var(--text-muted); }
 
 .metric-direction-tag {
   flex-shrink: 0;
@@ -639,6 +705,14 @@ details[open] > .version-summary::before {
 @media (max-width: 480px) {
   #app-header {
     padding-top: 28px;
+  }
+
+  .header-site-title {
+    display: block;
+    margin: 4px 0 0;
+    padding-left: 0;
+    border-left: none;
+    font-size: 15px;
   }
 
   #unlock-area {

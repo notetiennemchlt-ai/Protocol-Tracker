@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Protocol</title>
+<title>Focus Protocols and Metrics Tracker</title>
 <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 <div id="page">
   <header id="app-header">
     <div class="header-titles">
-      <span class="header-title">Etienne Michelet</span>
-      <span class="header-tagline">A public record of my current protocol. *Not a recommendation.</span>
+      <h1 class="header-title">Etienne Michelet <span class="header-site-title">Focus Protocols and Metrics Tracker</span></h1>
+      <span class="header-tagline">A public record of my protocols. <strong class="header-disclaimer">*Not a recommendation.</strong></span>
     </div>
     <a
       class="header-youtube"
@@ -98,23 +98,25 @@
         <div id="protocol-body" class="protocol-body"></div>
       </aside>
 
-      <section id="sleep-panel" class="secondary-panel" aria-label="Current Sleep Protocol">
-        <div class="protocol-header">
-          <h2 class="protocol-title">Sleep Protocol Tracker</h2>
-          <div id="sleep-updated" class="protocol-updated"></div>
+      <details id="sleep-panel" class="secondary-panel learned-dropdown">
+        <summary class="version-summary">
+          <span class="version-title">Sleep Protocols I've learned about</span>
+        </summary>
+        <div class="version-body">
+          <div id="sleep-updated" class="protocol-updated learned-dropdown-updated"></div>
+          <div id="sleep-body" class="protocol-body"></div>
         </div>
-        <div id="sleep-body" class="protocol-body"></div>
-      </section>
+      </details>
 
-      <!-- Split out of the Current Protocol Tracker — learning technique,
-           not focus/motivation, so it sits here instead. See js/learning.js. -->
-      <section id="learning-panel" class="secondary-panel" aria-label="Learning Protocol Tracker">
-        <div class="protocol-header">
-          <h2 class="protocol-title">Learning Protocol Tracker</h2>
-          <div id="learning-updated" class="protocol-updated"></div>
+      <details id="learning-panel" class="secondary-panel learned-dropdown">
+        <summary class="version-summary">
+          <span class="version-title">Learning Protocols I've learned about</span>
+        </summary>
+        <div class="version-body">
+          <div id="learning-updated" class="protocol-updated learned-dropdown-updated"></div>
+          <div id="learning-body" class="protocol-body"></div>
         </div>
-        <div id="learning-body" class="protocol-body"></div>
-      </section>
+      </details>
     </div>
 
     <main id="metrics-area" aria-label="60-Day Focus Metrics">

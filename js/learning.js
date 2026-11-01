@@ -1,4 +1,4 @@
-// The Enforce Learning panel: reads learning.json (sitting next to
+// The "Learning Protocols I've learned about" dropdown: reads learning.json (sitting next to
 // index.html) and renders it, same pattern as js/protocol.js and
 // js/sleep.js. Split out of protocol.json into its own file/panel since
 // it's about learning technique, not focus/motivation — see the

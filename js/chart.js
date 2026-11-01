@@ -2,7 +2,7 @@
 // >=8px marker with a 2px surface ring, ~10% opacity area fill, hairline
 // solid gridlines, sparing direct labels) follow the dataviz skill.
 //
-// One axis, x always running Day 0 -> maxDay (passed in by the caller —
+// One axis, x always running Day 1 -> maxDay (passed in by the caller —
 // see js/metrics.js's adaptiveTotalDays, which ages it from 30 up to 60
 // in 15-day steps as the challenge runs on, then holds there). Points are
 // given for every day in that range with value: null where a day hasn't
@@ -17,6 +17,8 @@ const PAD_L = 40;
 const PAD_R = 16;
 const PAD_T = 16;
 const PAD_B = 24;
+// x-axis starts at Day 1 — the challenge's first real day (there's no Day 0).
+const FIRST_DAY = 1;
 
 function el(tag, attrs = {}) {
   const e = document.createElementNS(SVG_NS, tag);
@@ -41,7 +43,7 @@ function fmtDate(iso) {
   return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
 }
 
-// points: [{ day, value, date }] for day 0..maxDay (value/date null where
+// points: [{ day, value, date }] for day 1..maxDay (value/date null where
 // there's no entry). Returns true if it drew a chart, false if there's no
 // data yet (caller shows the empty state instead).
 export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) {
@@ -67,7 +69,7 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
   const chartW = VBW - PAD_L - PAD_R;
   const chartH = VBH - PAD_T - PAD_B;
 
-  const xFor = (day) => PAD_L + (day / maxDay) * chartW;
+  const xFor = (day) => PAD_L + ((day - FIRST_DAY) / (maxDay - FIRST_DAY)) * chartW;
   const yFor = (v) => PAD_T + chartH - ((v - min) / (max - min)) * chartH;
 
   // y gridlines: min / mid / max of the actual data, with muted value labels
@@ -82,18 +84,18 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
     svg.appendChild(label);
   });
 
-  // x-axis: Day 0, every 15 days, up through maxDay — maxDay itself grows
-  // (30 -> 45 -> 60) as the challenge runs on, so this just naturally picks
-  // up more ticks rather than needing its own separate stepping logic.
-  const xTicks = [];
-  for (let d = 0; d < maxDay; d += 15) xTicks.push(d);
+  // x-axis: Day 1, then every 15 days up through maxDay — maxDay itself
+  // grows (30 -> 45 -> 60) as the challenge runs on, so this just naturally
+  // picks up more ticks rather than needing its own separate stepping logic.
+  const xTicks = [FIRST_DAY];
+  for (let d = 15; d < maxDay; d += 15) xTicks.push(d);
   xTicks.push(maxDay);
   xTicks.forEach((d) => {
     const x = xFor(d);
     const label = el('text', {
       x: x.toFixed(1),
       y: VBH - 6,
-      'text-anchor': d === 0 ? 'start' : d === maxDay ? 'end' : 'middle',
+      'text-anchor': d === FIRST_DAY ? 'start' : d === maxDay ? 'end' : 'middle',
       class: 'chart-axis-label',
     });
     label.setAttribute('fill', textMuted);
@@ -105,13 +107,13 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
 
   // Protocol version dividers — fixed reference lines shown on every
   // chart (not just when that day has a value) so all three metrics read
-  // against the same splits: V1 starts at Day 0, V2 at Day 30. Drawn
+  // against the same splits: V1 starts at Day 1, V2 at Day 30. Drawn
   // behind the line/area/markers (before them in document order) so real
   // data stays visually on top. Each label sits small, horizontal, and
   // centered right above the line's own top end, in the PAD_T margin above
   // the plot area rather than crossing through it.
   const dividers = [
-    { day: 0, label: 'Protocol V1' },
+    { day: FIRST_DAY, label: 'Protocol V1' },
     { day: 30, label: 'Protocol V2' },
   ];
   dividers

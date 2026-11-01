@@ -1,8 +1,7 @@
-// Shared rendering for any "protocol panel" — a titled box that reads a
-// JSON file of categories/items and renders it as a checklist with status
-// dots. Both js/protocol.js (Current Protocol Tracker) and js/sleep.js
-// (Current Sleep Protocol) call renderPanel() below with their own data
-// file and DOM ids. Shouldn't need to change when either protocol's
+// Shared rendering for the protocol panels. Two styles: renderCategory()
+// is the tracker checklist with Running/Dropped status dots (the Protocol
+// V1/V2 dropdowns), renderLearnedCategories() is the plain bulleted
+// "learned about" list (focus, sleep and learning panels). Shouldn't need to change when either protocol's
 // content changes.
 
 const STATUS_LABEL = {
@@ -120,9 +119,66 @@ export function renderCategory(category) {
   return section;
 }
 
-// Loads `url` and renders it into #<bodyId>, with the "Last updated" line
-// going into #<updatedId>. `errorMessage` is shown in the body if the
-// fetch fails.
+// "Learned about" rendering — a plain bulleted list per category, no
+// status dots, nothing crossed off (it's what's been learned, not what's
+// running). Each category gets its own color (title + bullets) from the
+// --cat-1..8 ramp in style.css, by position. Notes on dropped items are
+// left off since they're only the reason it was dropped.
+const CATEGORY_COLORS = 8;
+
+function renderLearnedItem(item) {
+  const li = document.createElement('li');
+  li.className = 'learned-item';
+
+  const text = document.createElement('span');
+  text.className = 'learned-item-text';
+  text.textContent = item.text;
+  li.appendChild(text);
+
+  if (item.note && item.status !== 'dropped') {
+    const note = document.createElement('div');
+    note.className = 'protocol-item-note';
+    note.textContent = item.note;
+    li.appendChild(note);
+  }
+
+  if (item.subitems && item.subitems.length) {
+    const subList = document.createElement('ul');
+    subList.className = 'protocol-subitem-list';
+    item.subitems.forEach((sub) => {
+      const subLi = document.createElement('li');
+      subLi.textContent = sub;
+      subList.appendChild(subLi);
+    });
+    li.appendChild(subList);
+  }
+
+  return li;
+}
+
+export function renderLearnedCategories(categories, target) {
+  target.innerHTML = '';
+  categories.forEach((category, i) => {
+    const section = document.createElement('section');
+    section.className = `protocol-category learned-category cat-${(i % CATEGORY_COLORS) + 1}`;
+
+    const heading = document.createElement('h3');
+    heading.className = 'protocol-category-title';
+    heading.textContent = category.name;
+    section.appendChild(heading);
+
+    const list = document.createElement('ul');
+    list.className = 'learned-list';
+    category.items.forEach((item) => list.appendChild(renderLearnedItem(item)));
+    section.appendChild(list);
+
+    target.appendChild(section);
+  });
+}
+
+// Loads `url` and renders it as a learned-about list into #<bodyId>, with
+// the "Last updated" line going into #<updatedId>. `errorMessage` is shown
+// in the body if the fetch fails. Used by the Sleep and Learning panels.
 export async function renderPanel({ url, bodyId, updatedId, errorMessage }) {
   const body = document.getElementById(bodyId);
   const updatedEl = document.getElementById(updatedId);
@@ -132,8 +188,7 @@ export async function renderPanel({ url, bodyId, updatedId, errorMessage }) {
     if (!res.ok) throw new Error(`Failed to load ${url}`);
     const data = await res.json();
     updatedEl.textContent = data.lastUpdated ? `Last updated: ${fmtUpdated(data.lastUpdated)}` : '';
-    body.innerHTML = '';
-    (data.categories || []).forEach((category) => body.appendChild(renderCategory(category)));
+    renderLearnedCategories(data.categories || [], body);
   } catch (err) {
     console.error(err);
     updatedEl.textContent = '';

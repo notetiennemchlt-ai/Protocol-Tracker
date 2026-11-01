@@ -73,8 +73,9 @@ body {
 
 .header-titles {
   display: flex;
-  flex-direction: column;
-  gap: 3px;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 14px;
 }
 
 .header-title {

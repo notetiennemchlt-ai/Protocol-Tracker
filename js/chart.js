@@ -251,18 +251,15 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
     tooltip.innerHTML = '';
     const valueEl = document.createElement('div');
     valueEl.className = 'chart-tooltip-value';
-    valueEl.textContent = hasValue ? fmtValue(p.value, unit) : 'No data';
+    // A day's note (e.g. "Day before test") rides along in parentheses
+    // after the value — tooltip only, never drawn on the chart itself.
+    const noteText = p.note ? ` (${p.note.charAt(0).toLowerCase()}${p.note.slice(1)})` : '';
+    valueEl.textContent = hasValue ? `${fmtValue(p.value, unit)}${noteText}` : 'No data';
     const dateEl = document.createElement('div');
     dateEl.className = 'chart-tooltip-date';
     dateEl.textContent = `Day ${p.day} · ${fmtDate(p.date)}`;
     tooltip.appendChild(valueEl);
     tooltip.appendChild(dateEl);
-    if (p.note) {
-      const noteEl = document.createElement('div');
-      noteEl.className = 'chart-tooltip-note';
-      noteEl.textContent = p.note;
-      tooltip.appendChild(noteEl);
-    }
 
     tooltip.style.left = `${(px / VBW) * 100}%`;
     tooltip.style.top = `${(py / VBH) * 100}%`;

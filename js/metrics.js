@@ -36,9 +36,9 @@ const CARDS = [
     blocks: [{ key: 'pvtRt', label: 'Reaction Time', unit: 'ms', direction: 'down-is-good', colorVar: '--series-2' }],
   },
   {
-    title: 'Minutes of Focused Learning',
+    title: 'Minutes of Focus',
     subtitle: 'Per day',
-    blocks: [{ key: 'focusMinutes', label: 'Minutes of Focused Learning', unit: 'min', direction: 'up-is-good', colorVar: '--series-4' }],
+    blocks: [{ key: 'focusMinutes', label: 'Minutes of Focus', unit: 'min', direction: 'up-is-good', colorVar: '--series-4' }],
   },
 ];
 

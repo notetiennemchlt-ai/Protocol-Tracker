@@ -17,7 +17,7 @@ const STEP_DAYS = 15;
 const MIN_TOTAL_DAYS = 30;
 
 // direction: 'up-is-good' or 'down-is-good' — which way a delta from
-// baseline is colored green vs red.
+// the first logged day is colored green vs red.
 // colorVar: next unused slot in the app's fixed categorical order
 // (css/style.css --series-1..4) — never reassign/cycle these. --series-3
 // is currently unused (freed when PVT lapses was dropped) — leave it open
@@ -61,7 +61,7 @@ function adaptiveTotalDays(rawDay) {
 }
 
 // Day X of N, from today vs. the start date (Day 1). Before the start date
-// it's Day 0 (baseline period); once N hits CEILING_DAYS, day stays capped
+// it's Day 0; once N hits CEILING_DAYS, day stays capped
 // there too. Returns `total` alongside the label text so the chart's x-axis
 // (see renderMetricChart's maxDay) can stay in lockstep with this same N,
 // rather than each metric card picking its own independently.
@@ -123,7 +123,7 @@ function renderBlock(block, points, { showLabel, totalDays }) {
   current.className = 'metric-current';
 
   const known = points.filter((p) => p.value != null);
-  const baseline = points[0].value;
+  const first = known.length ? known[0] : null;
   const latest = known.length ? known[known.length - 1] : null;
 
   const valueEl = document.createElement('span');
@@ -137,15 +137,15 @@ function renderBlock(block, points, { showLabel, totalDays }) {
     deltaEl.classList.add('flat');
   } else {
     valueEl.textContent = block.unit ? `${latest.value} ${block.unit}` : `${latest.value}`;
-    if (baseline == null) {
-      deltaEl.textContent = 'No baseline yet';
+    if (latest.day === first.day) {
+      deltaEl.textContent = `Day ${first.day}`;
       deltaEl.classList.add('flat');
     } else {
-      const delta = Math.round((latest.value - baseline) * 10) / 10;
+      const delta = Math.round((latest.value - first.value) * 10) / 10;
       const dir = deltaDirection(block.direction, delta);
       const arrow = delta > 0 ? '▲' : delta < 0 ? '▼' : '—';
       const unitPart = block.unit ? ` ${block.unit}` : '';
-      deltaEl.textContent = latest.day === 0 ? 'Baseline' : `${arrow} ${Math.abs(delta)}${unitPart} vs baseline`;
+      deltaEl.textContent = `${arrow} ${Math.abs(delta)}${unitPart} vs Day ${first.day}`;
       deltaEl.classList.add(dir);
     }
   }

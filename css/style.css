@@ -45,7 +45,7 @@ body {
 }
 
 #page {
-  max-width: 1020px;
+  max-width: 1340px;
   margin: 0 auto;
   padding: 0 24px 80px;
 }
@@ -103,56 +103,94 @@ body {
 }
 
 /* ==================================================================
-   Protocol column — the new-protocol banner, then all three trackers
-   (Focus/Current Protocol, Sleep, Learning) stacked in that order, all
-   at this column's fixed width (see .secondary-panel below — column's
-   own align-items:stretch default is what makes each one match it, no
-   width set on them individually). Sits to the left of the 30-day
-   metrics at the same top height.
+   Versions column — far left. Protocol V1 / V2 dropdowns (native
+   <details>, see index.html) holding the full tracker with its
+   Running/Dropped dots, then V3 as a plain "Coming soon" card.
+   ================================================================== */
+
+#versions-column {
+  flex: 0 0 340px;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.version-summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px 20px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.version-summary::-webkit-details-marker {
+  display: none;
+}
+
+.version-summary::before {
+  content: '▸';
+  font-size: 14px;
+  color: var(--text-muted);
+  transition: transform 0.15s ease;
+}
+
+details[open] > .version-summary::before {
+  transform: rotate(90deg);
+}
+
+.version-upcoming .version-summary {
+  cursor: default;
+}
+
+.version-upcoming .version-summary::before {
+  content: none;
+}
+
+.version-title {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.version-days {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.version-body {
+  border-top: 1px solid var(--border);
+}
+
+/* Caption under V2's Personally Implemented heading. */
+.personal-caption {
+  margin: -4px 0 8px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--series-1);
+}
+
+/* ==================================================================
+   Protocol column — "Protocols I've learned about" on top, then the
+   Sleep and Learning trackers, all at this column's fixed width (see
+   .secondary-panel below). Sits between the versions column and the
+   metrics, at the same top height.
    ================================================================== */
 
 #protocol-column {
-  flex: 0 0 420px;
-  width: 420px;
+  flex: 0 0 400px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-/* The protocols Etienne added himself, listed under one shared caption.
-   Same card treatment as the tracker below it (surface, border, radius)
-   so it stands out just as much, only shorter — reuses the protocol-item
-   row styling (dot + text + note). */
-#new-protocol-banner {
-  background: var(--surface-1);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 12px 16px;
-}
-
-/* A caption for the whole banner now, not a per-item badge — a full
-   sentence, so no uppercase/letter-spacing (unreadable at that length). */
-.new-protocol-badge {
-  padding: 4px 6px 10px;
-  font-size: 10.5px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: var(--series-1);
-}
-
-.new-protocol-title {
-  font-weight: 700;
-  font-size: 15px;
-}
-
-/* Shown only while the item is still pending its start date (see
-   js/new-protocol-banner.js) — sits opposite the item's title on the same
-   line via .protocol-item-line's justify-content: space-between. */
-.new-protocol-start-note {
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--text-muted);
-  white-space: nowrap;
+/* Learned-about items: no status dot, nothing crossed off. */
+.learned-item {
+  padding-left: 4px;
 }
 
 /* ==================================================================
@@ -534,11 +572,6 @@ body {
   font-weight: 600;
 }
 
-.chart-baseline-label {
-  font-size: 10px;
-  font-weight: 600;
-}
-
 .chart-divider-label {
   font-size: 7.5px;
   letter-spacing: 0.01em;
@@ -580,11 +613,23 @@ body {
   margin-top: 2px;
 }
 
+@media (max-width: 1180px) {
+  #shell {
+    flex-wrap: wrap;
+  }
+
+  #versions-column {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
 @media (max-width: 780px) {
   #shell {
     flex-direction: column;
   }
 
+  #versions-column,
   #protocol-column {
     flex: 1 1 auto;
     width: 100%;

@@ -17,7 +17,7 @@ const STATUS_LABEL = {
 const PHASE_ORDER = ['before', 'during', 'after'];
 const PHASE_LABEL = { before: 'Before', during: 'During', after: 'After' };
 
-function fmtUpdated(iso) {
+export function fmtUpdated(iso) {
   const d = new Date(`${iso}T00:00:00`);
   if (Number.isNaN(d.getTime())) return iso;
   return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
@@ -85,7 +85,7 @@ function renderItemList(items) {
   return list;
 }
 
-function renderCategory(category) {
+export function renderCategory(category) {
   const section = document.createElement('section');
   section.className = 'protocol-category';
 

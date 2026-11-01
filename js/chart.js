@@ -52,7 +52,6 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
   if (known.length === 0) return false;
 
   const seriesColor = cssVar(colorVar);
-  const baselineColor = cssVar('--text-secondary');
   const gridColor = cssVar('--gridline');
   const surface = cssVar('--surface-1');
   const textMuted = cssVar('--text-muted');
@@ -104,36 +103,42 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
 
   const baselineY = PAD_T + chartH;
 
-  // Day 30 divider — "New protocol", a fixed reference line shown on
-  // every chart (not just when Day 30 itself has a value) so all three
-  // metrics read against the same before/after split. Drawn behind the
-  // line/area/markers (before them in document order) so real data stays
-  // visually on top of it. Label sits small, horizontal, and centered
-  // right above the line's own top end, in the PAD_T margin above the
-  // plot area rather than crossing through it.
-  if (maxDay >= 30) {
-    const dividerX = xFor(30);
-    svg.appendChild(
-      el('line', {
-        x1: dividerX.toFixed(1),
-        x2: dividerX.toFixed(1),
-        y1: PAD_T,
-        y2: baselineY,
-        stroke: textMuted,
-        'stroke-width': 1,
-        'stroke-dasharray': '3,3',
-      })
-    );
-    const dividerLabel = el('text', {
-      x: dividerX.toFixed(1),
-      y: (PAD_T - 5).toFixed(1),
-      'text-anchor': 'middle',
-      class: 'chart-divider-label',
+  // Protocol version dividers — fixed reference lines shown on every
+  // chart (not just when that day has a value) so all three metrics read
+  // against the same splits: V1 starts at Day 0, V2 at Day 30. Drawn
+  // behind the line/area/markers (before them in document order) so real
+  // data stays visually on top. Each label sits small, horizontal, and
+  // centered right above the line's own top end, in the PAD_T margin above
+  // the plot area rather than crossing through it.
+  const dividers = [
+    { day: 0, label: 'Protocol V1' },
+    { day: 30, label: 'Protocol V2' },
+  ];
+  dividers
+    .filter((d) => d.day <= maxDay)
+    .forEach((d) => {
+      const dividerX = xFor(d.day);
+      svg.appendChild(
+        el('line', {
+          x1: dividerX.toFixed(1),
+          x2: dividerX.toFixed(1),
+          y1: PAD_T,
+          y2: baselineY,
+          stroke: textMuted,
+          'stroke-width': 1,
+          'stroke-dasharray': '3,3',
+        })
+      );
+      const dividerLabel = el('text', {
+        x: dividerX.toFixed(1),
+        y: (PAD_T - 5).toFixed(1),
+        'text-anchor': 'middle',
+        class: 'chart-divider-label',
+      });
+      dividerLabel.setAttribute('fill', textMuted);
+      dividerLabel.textContent = d.label;
+      svg.appendChild(dividerLabel);
     });
-    dividerLabel.setAttribute('fill', textMuted);
-    dividerLabel.textContent = 'New protocol';
-    svg.appendChild(dividerLabel);
-  }
 
   // line + area — one continuous run across all known points, so a missed
   // day (filtered out of `known`) draws a straight line to the next data
@@ -152,27 +157,20 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
   line.setAttribute('stroke-linecap', 'round');
   svg.appendChild(line);
 
-  // markers — one per known point (data is sparse: at most 31 days), each
-  // with a surface-color ring so they stay legible crossing the line.
-  // Day 0 (baseline) gets a visually distinct muted marker + direct label.
+  // markers — one per known point, each with a surface-color ring so they
+  // stay legible crossing the line. The latest gets a direct value label.
   const latestDay = known[known.length - 1].day;
   known.forEach((p) => {
-    const isBaseline = p.day === 0;
     const isLatest = p.day === latestDay;
     const x = xFor(p.day);
     const y = yFor(p.value);
 
-    const dot = el('circle', { cx: x.toFixed(1), cy: y.toFixed(1), r: isBaseline ? 5 : 4, 'stroke-width': 2 });
-    dot.setAttribute('fill', isBaseline ? baselineColor : seriesColor);
+    const dot = el('circle', { cx: x.toFixed(1), cy: y.toFixed(1), r: 4, 'stroke-width': 2 });
+    dot.setAttribute('fill', seriesColor);
     dot.setAttribute('stroke', surface);
     svg.appendChild(dot);
 
-    if (isBaseline) {
-      const label = el('text', { x: x.toFixed(1), y: (y - 12).toFixed(1), 'text-anchor': 'start', class: 'chart-baseline-label' });
-      label.setAttribute('fill', textMuted);
-      label.textContent = `Baseline · ${fmtValue(p.value, unit)}`;
-      svg.appendChild(label);
-    } else if (isLatest) {
+    if (isLatest) {
       const label = el('text', {
         x: Math.min(x + 8, VBW - 4),
         y: (y - 10).toFixed(1),
@@ -245,7 +243,7 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
     crosshair.setAttribute('opacity', '1');
     hoverDot.setAttribute('cx', px.toFixed(1));
     hoverDot.setAttribute('cy', py.toFixed(1));
-    hoverDot.setAttribute('fill', p.day === 0 ? baselineColor : seriesColor);
+    hoverDot.setAttribute('fill', seriesColor);
     hoverDot.setAttribute('opacity', hasValue ? '1' : '0.5');
 
     tooltip.innerHTML = '';
@@ -254,7 +252,7 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
     valueEl.textContent = hasValue ? fmtValue(p.value, unit) : 'No data';
     const dateEl = document.createElement('div');
     dateEl.className = 'chart-tooltip-date';
-    dateEl.textContent = p.day === 0 ? `Baseline · ${fmtDate(p.date)}` : `Day ${p.day} · ${fmtDate(p.date)}`;
+    dateEl.textContent = `Day ${p.day} · ${fmtDate(p.date)}`;
     tooltip.appendChild(valueEl);
     tooltip.appendChild(dateEl);
     if (p.note) {

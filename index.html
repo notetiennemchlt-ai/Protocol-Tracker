@@ -28,7 +28,8 @@
     <!-- Protocol versions: what was actually running during each phase of
          the challenge, with the Running/Dropped dots. V1 and V2 both
          render protocol.json's categories (see js/protocol.js); V2 adds
-         the personally implemented ones on top. -->
+         the personally implemented ones on top. V3 has its own file,
+         protocol-v3.json, Personally Implemented included. -->
     <nav id="versions-column" aria-label="Protocol versions">
       <details class="version-panel secondary-panel">
         <summary class="version-summary">
@@ -81,12 +82,13 @@
         </div>
       </details>
 
-      <section class="version-panel secondary-panel version-upcoming">
-        <div class="version-summary">
+      <details class="version-panel secondary-panel">
+        <summary class="version-summary">
           <span class="version-title">Protocol V3</span>
-          <span class="version-days">Coming soon</span>
-        </div>
-      </section>
+          <span class="version-days">Days 60-90</span>
+        </summary>
+        <div id="v3-body" class="protocol-body version-body"></div>
+      </details>
     </nav>
 
     <div id="protocol-column">

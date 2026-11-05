@@ -98,6 +98,14 @@ export function renderCategory(category) {
     heading.appendChild(sub);
   }
   section.appendChild(heading);
+  // Optional one-line caption under the heading (V3's Personally
+  // Implemented section uses it).
+  if (category.caption) {
+    const caption = document.createElement('div');
+    caption.className = 'personal-caption';
+    caption.textContent = category.caption;
+    section.appendChild(caption);
+  }
 
   const hasPhases = category.items.some((item) => item.phase);
 

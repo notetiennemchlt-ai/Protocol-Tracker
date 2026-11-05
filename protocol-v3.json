@@ -1,0 +1,248 @@
+{
+  "lastUpdated": "2026-11-04",
+  "categories": [
+    {
+      "name": "Personally Implemented",
+      "caption": "Not protocols Andrew Huberman specified directly",
+      "items": [
+        {
+          "text": "Prioritize Focus",
+          "status": "running",
+          "note": "Focus first thing after waking, first thing after school, and as often as possible"
+        },
+        {
+          "text": "Time Management",
+          "status": "running",
+          "note": "Checking notifications 2-3x a day with a 10 minute limit"
+        },
+        {
+          "text": "No “Phantom Scrolling”",
+          "status": "running",
+          "note": "No wandering aimlessly on the internet or any social media without a clear goal in mind"
+        },
+        {
+          "text": "Dopamine Detox",
+          "status": "dropped",
+          "note": "See day 22 for more info"
+        }
+      ]
+    },
+    {
+      "name": "Foundations",
+      "subtitle": "always on",
+      "items": [
+        {
+          "text": "Prioritize sleep",
+          "status": "running",
+          "note": "At least 8 hours, high quality and regularity"
+        },
+        {
+          "text": "Low sugar diet",
+          "status": "dropped",
+          "note": "Under ~35g/day"
+        },
+        {
+          "text": "Maintain good social connection",
+          "status": "running"
+        },
+        {
+          "text": "Zero scrolling + less smartphone use",
+          "status": "running"
+        },
+        {
+          "text": "No layering dopamine",
+          "status": "running"
+        },
+        {
+          "text": "Adequate Omega 3 intake",
+          "status": "running",
+          "note": "Sufficient to modulate good focus"
+        }
+      ]
+    },
+    {
+      "name": "Training",
+      "subtitle": "deliberate practice",
+      "items": [
+        {
+          "text": "17-minute meditation",
+          "status": "running",
+          "note": "Not within 4 hours of sleep. Done in phase 2 of the day"
+        },
+        {
+          "text": "Visual focus training",
+          "status": "running",
+          "note": "Done for 5 minutes"
+        },
+        {
+          "text": "\"Hypnosis\" training",
+          "status": "dropped",
+          "note": "Using scripts hits a paywall"
+        }
+      ]
+    },
+    {
+      "name": "Timing and Environment",
+      "items": [
+        {
+          "text": "Match background to arousal level",
+          "status": "dropped",
+          "note": "Clashes with other protocols"
+        },
+        {
+          "text": "Remove interruptions as much as possible",
+          "status": "running"
+        },
+        {
+          "text": "Elevate screen so I'm looking up or straight ahead",
+          "status": "running"
+        },
+        {
+          "text": "Set the visual window (sit close enough that the work fills my field of view)",
+          "status": "running"
+        },
+        {
+          "text": "Minimize background noise while working (AC, heaters, fans)",
+          "status": "running"
+        },
+        {
+          "text": "Focus neither hungry nor full",
+          "status": "dropped",
+          "note": "Clashes with studying first thing in the morning"
+        },
+        {
+          "text": "Study alone",
+          "status": "running"
+        }
+      ]
+    },
+    {
+      "name": "Circadian Anchoring",
+      "items": [
+        {
+          "text": "Phase 1 (0-8 hours after waking)",
+          "status": "running",
+          "subitems": [
+            "Caffeine first thing in the morning",
+            "Deep focus first thing in the morning",
+            "Sunlamp on while working in the morning"
+          ]
+        },
+        {
+          "text": "Phase 2 (8-16 hours after waking)",
+          "status": "running",
+          "subitems": [
+            "Do easier tasks during this phase of the day if possible",
+            "Begin dimming lights as the day goes on"
+          ]
+        },
+        {
+          "text": "Phase 3 (16-24 hours after waking)",
+          "status": "running",
+          "subitems": [
+            "Ideally, sleep during this phase",
+            "If you choose to work instead, work in an environment as dimly lit as possible while still being able to do work"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "During Work Sessions",
+      "items": [
+        {
+          "text": "40 Hz binaural beats",
+          "status": "running",
+          "note": "Before or during a work session"
+        },
+        {
+          "text": "Physical fidgeting",
+          "status": "running",
+          "note": "As needed"
+        },
+        {
+          "text": "45/5 rule (5 minutes of panoramic vision per 45 minutes of focused work)",
+          "status": "running"
+        },
+        {
+          "text": "Standing for part of the session",
+          "status": "dropped",
+          "note": "No access to a standing desk"
+        },
+        {
+          "text": "Work in 90-minute ultradian cycles",
+          "status": "running",
+          "note": "Two 45/5 blocks make one cycle"
+        }
+      ]
+    },
+    {
+      "name": "Increasing Long-Term Motivation",
+      "items": [
+        {
+          "text": "Blunt reward schedules",
+          "status": "dropped",
+          "note": "Clashes with attaching reward to effort"
+        },
+        {
+          "text": "Randomized reward schedules",
+          "status": "dropped",
+          "note": "Clashes with attaching reward to effort"
+        },
+        {
+          "text": "Attach reward to effort",
+          "status": "running",
+          "note": "As much as possible"
+        },
+        {
+          "text": "Dopamine subjectivity",
+          "status": "dropped",
+          "note": "Interferes with attaching reward to effort (can't do both) — attaching reward to effort works better for me"
+        }
+      ]
+    },
+    {
+      "name": "Alertness Levers",
+      "items": [
+        {
+          "text": "Caffeine",
+          "status": "running",
+          "note": "Personally taking 60mg"
+        },
+        {
+          "text": "Cold exposure",
+          "status": "dropped",
+          "note": "Uncomfortable but safe for 1-5 minutes"
+        },
+        {
+          "text": "NSDR",
+          "status": "running",
+          "note": "Before my first work session of the day"
+        },
+        {
+          "text": "Superoxygenated breathing",
+          "status": "dropped",
+          "note": "Has not been useful, never end up using it"
+        },
+        {
+          "text": "Do something harder when procrastinating",
+          "status": "running",
+          "note": "If applicable/possible"
+        },
+        {
+          "text": "Morning exercise before deep focus work",
+          "status": "dropped"
+        }
+      ]
+    },
+    {
+      "name": "Habit Formation",
+      "items": [
+        {
+          "text": "Visualization tool",
+          "status": "dropped",
+          "note": "Not used in regards to focus"
+        }
+      ]
+    }
+  ]
+}

@@ -1,15 +1,32 @@
 {
-  "lastUpdated": "2026-11-01",
+  "lastUpdated": "2026-11-04",
   "categories": [
     {
       "name": "Foundations",
       "subtitle": "always on",
       "items": [
-        { "text": "Prioritize sleep", "status": "running", "note": "At least 8 hours, high quality and regularity" },
-        { "text": "Low sugar diet", "status": "running", "note": "Under ~35g/day" },
-        { "text": "Maintain good social connection", "status": "running" },
-        { "text": "Zero scrolling + less smartphone use", "status": "running" },
-        { "text": "No layering dopamine", "status": "running" },
+        {
+          "text": "Prioritize sleep",
+          "status": "running",
+          "note": "At least 8 hours, high quality and regularity"
+        },
+        {
+          "text": "Low sugar diet",
+          "status": "running",
+          "note": "Under ~35g/day"
+        },
+        {
+          "text": "Maintain good social connection",
+          "status": "running"
+        },
+        {
+          "text": "Zero scrolling + less smartphone use",
+          "status": "running"
+        },
+        {
+          "text": "No layering dopamine",
+          "status": "running"
+        },
         {
           "text": "Adequate Omega 3 intake",
           "status": "running",
@@ -26,7 +43,11 @@
           "status": "running",
           "note": "Not within 4 hours of sleep. Done in phase 2 of the day"
         },
-        { "text": "Visual focus training", "status": "running", "note": "Done for 5 minutes" },
+        {
+          "text": "Visual focus training",
+          "status": "running",
+          "note": "Done for 5 minutes"
+        },
         {
           "text": "\"Hypnosis\" training",
           "status": "dropped",
@@ -42,15 +63,30 @@
           "status": "dropped",
           "note": "Clashes with other protocols"
         },
-        { "text": "Remove Interruptions as much as possible", "status": "running" },
-        { "text": "Elevate screen so I'm looking up or straight ahead", "status": "running" },
-        { "text": "Set the visual window (sit close enough that the work fills my field of view)", "status": "running" },
+        {
+          "text": "Remove interruptions as much as possible",
+          "status": "running"
+        },
+        {
+          "text": "Elevate screen so I'm looking up or straight ahead",
+          "status": "running"
+        },
+        {
+          "text": "Set the visual window (sit close enough that the work fills my field of view)",
+          "status": "running"
+        },
         {
           "text": "Minimize background noise while working (AC, heaters, fans)",
           "status": "running"
         },
-        { "text": "Focus neither hungry nor full", "status": "running" },
-        { "text": "Study alone", "status": "running" }
+        {
+          "text": "Focus neither hungry nor full",
+          "status": "running"
+        },
+        {
+          "text": "Study alone",
+          "status": "running"
+        }
       ]
     },
     {
@@ -87,9 +123,20 @@
     {
       "name": "During Work Sessions",
       "items": [
-        { "text": "40 Hz binaural beats", "status": "running", "note": "Before or during a work session" },
-        { "text": "Physical fidgeting", "status": "running", "note": "As needed" },
-        { "text": "45/5 rule (5 minutes of panoramic vision per 45 minutes of focused work)", "status": "running" },
+        {
+          "text": "40 Hz binaural beats",
+          "status": "running",
+          "note": "Before or during a work session"
+        },
+        {
+          "text": "Physical fidgeting",
+          "status": "running",
+          "note": "As needed"
+        },
+        {
+          "text": "45/5 rule (5 minutes of panoramic vision per 45 minutes of focused work)",
+          "status": "running"
+        },
         {
           "text": "Standing for part of the session",
           "status": "dropped",
@@ -115,7 +162,11 @@
           "status": "dropped",
           "note": "Clashes with attaching reward to effort"
         },
-        { "text": "Attach reward to effort", "status": "running", "note": "As much as possible" },
+        {
+          "text": "Attach reward to effort",
+          "status": "running",
+          "note": "As much as possible"
+        },
         {
           "text": "Dopamine subjectivity",
           "status": "dropped",
@@ -141,7 +192,11 @@
           "status": "running",
           "note": "Before my first work session of the day"
         },
-        { "text": "Superoxygenated breathing", "status": "running", "note": "When needed" },
+        {
+          "text": "Superoxygenated breathing",
+          "status": "running",
+          "note": "When needed"
+        },
         {
           "text": "Do something harder when procrastinating",
           "status": "running",

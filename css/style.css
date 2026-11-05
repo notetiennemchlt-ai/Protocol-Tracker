@@ -135,7 +135,7 @@ body {
 /* ==================================================================
    Versions column — far left. Protocol V1 / V2 dropdowns (native
    <details>, see index.html) holding the full tracker with its
-   Running/Dropped dots, then V3 as a plain "Coming soon" card.
+   Running/Dropped dots.
    ================================================================== */
 
 #versions-column {
@@ -169,14 +169,6 @@ body {
 
 details[open] > .version-summary::before {
   transform: rotate(90deg);
-}
-
-.version-upcoming .version-summary {
-  cursor: default;
-}
-
-.version-upcoming .version-summary::before {
-  content: none;
 }
 
 .version-title {

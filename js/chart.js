@@ -3,7 +3,7 @@
 // solid gridlines, sparing direct labels) follow the dataviz skill.
 //
 // One axis, x always running Day 1 -> maxDay (passed in by the caller —
-// see js/metrics.js's adaptiveTotalDays, which ages it from 30 up to 60
+// see js/metrics.js's adaptiveTotalDays, which ages it from 30 up to 90
 // in 15-day steps as the challenge runs on, then holds there). Points are
 // given for every day in that range with value: null where a day hasn't
 // been reached or was missed — the line and area skip those days
@@ -85,7 +85,7 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
   });
 
   // x-axis: Day 1, then every 15 days up through maxDay — maxDay itself
-  // grows (30 -> 45 -> 60) as the challenge runs on, so this just naturally
+  // grows (30 -> 45 -> ... -> 90) as the challenge runs on, so this just naturally
   // picks up more ticks rather than needing its own separate stepping logic.
   const xTicks = [FIRST_DAY];
   for (let d = 15; d < maxDay; d += 15) xTicks.push(d);
@@ -107,7 +107,7 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
 
   // Protocol version dividers — fixed reference lines shown on every
   // chart (not just when that day has a value) so all three metrics read
-  // against the same splits: V1 starts at Day 1, V2 at Day 30. Drawn
+  // against the same splits: V1 starts at Day 1, V2 at Day 30, V3 at Day 60. Drawn
   // behind the line/area/markers (before them in document order) so real
   // data stays visually on top. Each label sits small, horizontal, and
   // centered right above the line's own top end, in the PAD_T margin above
@@ -115,6 +115,7 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
   const dividers = [
     { day: FIRST_DAY, label: 'Protocol V1' },
     { day: 30, label: 'Protocol V2' },
+    { day: 60, label: 'Protocol V3' },
   ];
   dividers
     .filter((d) => d.day <= maxDay)

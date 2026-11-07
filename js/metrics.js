@@ -8,11 +8,11 @@ import { renderMetricChart } from './chart.js';
 const DATA_URL = 'data/metrics.json';
 
 // The chart/day-count used to be fixed at 30 — now it ages up in 15-day
-// steps (30 -> 45 -> 60) as the challenge actually runs past each
+// steps (30 -> 45 -> 60 -> 75 -> 90) as the challenge actually runs past each
 // threshold, and stops growing once it hits CEILING_DAYS, per request.
 // Starting the floor at 30 (not 15) keeps an early, mostly-empty chart
 // from looking tiny on day 1 — same visual starting point as before.
-const CEILING_DAYS = 60;
+const CEILING_DAYS = 90;
 const STEP_DAYS = 15;
 const MIN_TOTAL_DAYS = 30;
 
@@ -54,7 +54,7 @@ function fmtDate(iso) {
   return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
-// N itself grows in 15-day steps as the challenge runs on (30 -> 45 -> 60),
+// N itself grows in 15-day steps as the challenge runs on (30 -> ... -> 90),
 // never past CEILING_DAYS — see the constants above.
 function adaptiveTotalDays(rawDay) {
   return Math.min(CEILING_DAYS, Math.max(MIN_TOTAL_DAYS, Math.ceil(rawDay / STEP_DAYS) * STEP_DAYS));

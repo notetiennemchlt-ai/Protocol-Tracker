@@ -46,7 +46,10 @@ function fmtDate(iso) {
 // points: [{ day, value, date }] for day 1..maxDay (value/date null where
 // there's no entry). Returns true if it drew a chart, false if there's no
 // data yet (caller shows the empty state instead).
-export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) {
+// zeroBase: anchor the y-axis at 0 instead of just below the lowest value,
+// so heights are proportional to the values themselves (used for minutes,
+// where "twice as high" should mean "twice as long").
+export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30, zeroBase = false }) {
   svg.innerHTML = '';
   svg.setAttribute('viewBox', `0 0 ${VBW} ${VBH}`);
 
@@ -63,7 +66,7 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
   const rawMin = Math.min(...values);
   const rawMax = Math.max(...values);
   const pad = (rawMax - rawMin) * 0.15 || Math.abs(rawMax) * 0.05 || 1;
-  const min = rawMin - pad;
+  const min = zeroBase ? 0 : rawMin - pad;
   const max = rawMax + pad;
 
   const chartW = VBW - PAD_L - PAD_R;
@@ -72,8 +75,10 @@ export function renderMetricChart(svg, points, { colorVar, unit, maxDay = 30 }) 
   const xFor = (day) => PAD_L + ((day - FIRST_DAY) / (maxDay - FIRST_DAY)) * chartW;
   const yFor = (v) => PAD_T + chartH - ((v - min) / (max - min)) * chartH;
 
-  // y gridlines: min / mid / max of the actual data, with muted value labels
-  [rawMin, (rawMin + rawMax) / 2, rawMax].forEach((v) => {
+  // y gridlines: min / mid / max of the actual data (0 / mid / max when
+  // zeroBase), with muted value labels
+  const gridLow = zeroBase ? 0 : rawMin;
+  [gridLow, (gridLow + rawMax) / 2, rawMax].forEach((v) => {
     const y = yFor(v);
     svg.appendChild(
       el('line', { x1: PAD_L, x2: VBW - PAD_R, y1: y.toFixed(1), y2: y.toFixed(1), stroke: gridColor, 'stroke-width': 1 })

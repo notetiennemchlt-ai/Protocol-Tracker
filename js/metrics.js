@@ -38,7 +38,9 @@ const CARDS = [
   {
     title: 'Minutes of Focus',
     subtitle: 'Per day',
-    blocks: [{ key: 'focusMinutes', label: 'Minutes of Focus', unit: 'min', direction: 'up-is-good', colorVar: '--series-4' }],
+    // zeroBase: y-axis starts at 0 so bar height is proportional — 90 min
+    // sits exactly twice as high as 45 min.
+    blocks: [{ key: 'focusMinutes', label: 'Minutes of Focus', unit: 'min', direction: 'up-is-good', colorVar: '--series-4', zeroBase: true }],
   },
 ];
 
@@ -143,7 +145,7 @@ function renderBlock(block, points, { showLabel, totalDays }) {
 
   const svg = chartWrap.querySelector('.chart-svg');
   const empty = chartWrap.querySelector('.chart-empty');
-  const hasChart = renderMetricChart(svg, points, { colorVar: block.colorVar, unit: block.unit, maxDay: totalDays });
+  const hasChart = renderMetricChart(svg, points, { colorVar: block.colorVar, unit: block.unit, maxDay: totalDays, zeroBase: block.zeroBase });
   svg.style.display = hasChart ? '' : 'none';
   empty.style.display = hasChart ? 'none' : '';
 
